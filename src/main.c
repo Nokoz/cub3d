@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/04 17:33:44 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/05 11:57:56 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	main(int ac, char **av)
 	game->px = 150;
 	game->py = 150;
 	game->pa = 0;
-	game->pdx = cos(game->pa);
+	game->pdx = cos(game->pa) * 5;
+	game->pdy = sin(game->pa) * 5;
 	ft_init_win(game);
 
 	mlx_hook(game->win_ptr, 02, 1L<<0, ft_key_handle, game);
@@ -52,10 +53,11 @@ int		ft_frame_loop(t_game *g)
 	g->img->img = new_img(g->mlx_ptr);
 	g->img->addr = get_addr(g->img);
 
-//	ft_printf("ici\n");
 		ft_draw_background(g);
 		ft_show_mini(g);
 		ft_show_player(g);
+		ft_show_dir(g);
+	ft_printf("ici\n");
 		put_img(g);
 		destroy_img(g);
 		return (0);
@@ -67,30 +69,21 @@ int		ft_key_handle(int key, t_game *game)
 		ft_move_up(game);
 	//	game->py -=5;
 	if (key == KEY_D)
-		game->px +=5;
+		ft_move_right(game);
+//		game->px +=5;
 	if (key == KEY_S)
 		ft_move_down(game);
 //		game->py +=5;
 	if (key == KEY_A)
-		game->px -=5;
+		ft_move_left(game);
+//		game->px -=5;
 	if (key == KEY_ESC)
 		exit(2);
+	if (key == KEY_RIGHT)
+		ft_rotate_right(game);
+	if (key == KEY_LEFT)
+		ft_rotate_left(game);
 	ft_frame_loop(game);
 	return (0);
 }
 
-void	ft_move_up(t_game *g)
-{
-	//check possible
-	
-	g->px+=g->pdx;
-	g->py+=g->pdy;
-}
-
-void	ft_move_down(t_game *g)
-{
-	//check possible
-	
-	g->px-=g->pdx;
-	g->py-=g->pdy;
-}

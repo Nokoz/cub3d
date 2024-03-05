@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:28:32 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/04 17:33:40 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/05 11:54:56 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,20 @@ typedef struct s_game
 
 void	ft_init_win(t_game *game);
 void	ft_show_mini(t_game *game);
+void	ft_show_dir(t_game *game);
 void	ft_draw_background(t_game *game);
 void	ft_show_player(t_game *game);
 void	ft_print_square(t_game *game, int w, int h, char c);
 int		ft_frame_loop(t_game *game);
 int		ft_key_handle(int key, t_game *game);
 void	img_pix_put(t_img *img, int x, int y, int color);
+
 void	ft_move_up(t_game *g);
 void	ft_move_down(t_game *g);
+void	ft_move_left(t_game *g);
+void	ft_move_right(t_game *g);
+void	ft_rotate_left(t_game *g);
+void	ft_rotate_right(t_game *g);
 
 //wrapper
 void	*new_img(void *mlx_ptr);

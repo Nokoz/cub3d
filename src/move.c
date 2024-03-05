@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 08:48:20 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/05 12:01:15 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/05 13:55:28 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ void	ft_move_up(t_game *g)
 	g->py+=g->pdy;
 }
 
+void	ft_move_left(t_game *g)
+{
+	//check possible
+//(sin pa ; -cos pa)	
+	g->px += sin(g->pa) * 5;
+	g->py += -cos(g->pa) * 5;
+}
+
 void	ft_move_right(t_game *g)
 {
 	//check possible
 	
-	g->py+=g->pdy;
-	g->px-=g->pdx;
-}
-
-void	ft_move_left(t_game *g)
-{
-	//check possible
-	
-	g->py-=g->pdy;
-	g->px+=g->pdx;
+	g->px += -sin(g->pa) * 5;
+	g->py += cos(g->pa) * 5;
 }
 
 void	ft_rotate_right(t_game *g)

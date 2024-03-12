@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 08:48:20 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/05 13:55:28 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:44:40 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,27 @@ void	ft_rotate_left(t_game *g)
 		g->pa += 2 * M_PI;
 	g->pdx = cos(g->pa) * 5;
 	g->pdy = sin(g->pa) * 5;
+}
+int		ft_key_handle(int key, t_game *game)
+{
+	if (key == KEY_W)
+		ft_move_up(game);
+	//	game->py -=5;
+	if (key == KEY_D)
+		ft_move_right(game);
+//		game->px +=5;
+	if (key == KEY_S)
+		ft_move_down(game);
+//		game->py +=5;
+	if (key == KEY_A)
+		ft_move_left(game);
+//		game->px -=5;
+	if (key == KEY_ESC)
+		exit(2);
+	if (key == KEY_RIGHT)
+		ft_rotate_right(game);
+	if (key == KEY_LEFT)
+		ft_rotate_left(game);
+	ft_frame_loop(game);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:54:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/05 10:44:28 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:36:06 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,62 @@ void	ft_show_player(t_game *game)
 	mlx_pixel_put(game->mlx_ptr, game->win_ptr, game->px + 5 , game->py - 1, 2009780);
 	mlx_pixel_put(game->mlx_ptr, game->win_ptr, game->px + 6, game->py , 2009780);
 	mlx_pixel_put(game->mlx_ptr, game->win_ptr, game->px + 7, game->py , 2009780);
+	*/
+}
+
+void ft_show_ray(t_game *g)
+{
+	//fin du viseur
+	int x1 = g->ray->mx; int y1 = g->ray->my;	
+	int lx = g->px; int ly = g->py;
+	
+	int dx = abs(x1 - lx);
+    int dy = abs(y1 - ly);
+    int sx, sy, err, e2;
+
+	ft_printf("la\n");
+    if (lx < x1) {
+        sx = 1;
+    } else {
+        sx = -1;
+    }
+
+    if (ly < y1) {
+        sy = 1;
+    } else {
+        sy = -1;
+    }
+
+    err = dx - dy;
+
+    while (1) {
+		img_pix_put(g->img, (int)lx, (int)ly, 3668530);
+
+        if (lx == x1 && ly == y1) {
+            break;
+        }
+
+        e2 = 2 * err;
+
+        if (e2 > -dy) {
+            err -= dy;
+            lx += sx;
+        }
+
+        if (lx == x1 && ly == y1) {
+			img_pix_put(g->img, (int)lx, (int)ly, 3668530);
+            break;
+        }
+
+        if (e2 < dx) {
+            err += dx;
+            ly += sy;
+        }
+    }
+	/*
+	img_pix_put(g->img, (int)lx, (int)ly,8882050);
+	img_pix_put(g->img, (int)lx+1, (int)ly, 8882050);
+	img_pix_put(g->img, (int)lx+2, (int)ly, 8882050);
 	*/
 }
 

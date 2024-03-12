@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/05 11:57:56 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:36:18 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,22 @@ int	main(int ac, char **av)
 	t_game	*game;
 	t_map	map;
 	t_img	*img;
+	t_ray	*ray;
 	(void)ac;
 	(void)av;
 	ft_printf("CUB3D\n");
 
 	game = malloc(sizeof(t_game));
 	img = malloc(sizeof(t_img));
+	ray = malloc(sizeof(t_ray));
 	char *mapy = "11111\n10001\n10101\n10001\n10001\n11111\n";
 
 	map.map = ft_split(mapy, '\n');
 	game->map = map;
 	game->img = img;
+	game->ray = ray;
 	game->px = 150;
-	game->py = 150;
+	game->py = 250;
 	game->pa = 0;
 	game->pdx = cos(game->pa) * 5;
 	game->pdy = sin(game->pa) * 5;
@@ -57,33 +60,57 @@ int		ft_frame_loop(t_game *g)
 		ft_show_mini(g);
 		ft_show_player(g);
 		ft_show_dir(g);
+		ft_cast_ray(g);
 	ft_printf("ici\n");
+		ft_show_ray(g);
 		put_img(g);
 		destroy_img(g);
 		return (0);
 }
 
-int		ft_key_handle(int key, t_game *game)
+void	ft_cast_ray(t_game *g)
 {
-	if (key == KEY_W)
-		ft_move_up(game);
-	//	game->py -=5;
-	if (key == KEY_D)
-		ft_move_right(game);
-//		game->px +=5;
-	if (key == KEY_S)
-		ft_move_down(game);
-//		game->py +=5;
-	if (key == KEY_A)
-		ft_move_left(game);
-//		game->px -=5;
-	if (key == KEY_ESC)
-		exit(2);
-	if (key == KEY_RIGHT)
-		ft_rotate_right(game);
-	if (key == KEY_LEFT)
-		ft_rotate_left(game);
-	ft_frame_loop(game);
-	return (0);
-}
+	float aTan;
+	g->ray->ra = g->pa;
+	g->ray->r = 0;
+	while (g->ray->r < 0)
+	{
+		g->ray->dof = 0;
+		aTan = -1 / tan(g->ray->ra);
+		if (g->ray->ra > M_PI) // looking up
+		{
+			g->ray->ry = (((int)g->py >> 6) << 6) - 0.0001;
+			g->ray->rx = (g->py - g->ray->ry) * aTan + g->px;
+			g->ray->yo = -64;
+			g->ray->xo = -g->ray->yo * aTan;
+		}
+		if (g->ray->ra < M_PI) // looking down
+		{
+			g->ray->ry = (((int)g->py >> 6) << 6) + 64;
+			g->ray->rx = (g->py - g->ray->ry) * aTan + g->px;
+			g->ray->yo = 64;
+			g->ray->xo = -g->ray->yo * aTan;
+		}
+		if (g->ray->ra == 0 || g->ray->ra == M_PI) // looking horizon
+		{
+			g->ray->rx = g->px;
+			g->ray->ry = g->py;
+			g->ray->dof = 8;
+		}
+		while (g->ray->dof < 8)
+		{
+			g->ray->mx = (int) (g->ray->rx) >> 6;
+			g->ray->my = (int) (g->ray->ry) >> 6;
+			if (g->map.map[g->ray->mx][g->ray->my] == 1) //hit wall
+				g->ray->dof = 8;
+			else //next line
+			{
+				g->ray->rx = g->ray->xo;
+				g->ray->ry = g->ray->yo;
+				g->ray->dof += 1;
+			}
 
+		}
+		g->ray->r++;
+	}
+}

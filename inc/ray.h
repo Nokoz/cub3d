@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:28:32 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/12 16:22:53 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:13:33 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define H 800
 # define W 1600
+# define DR	0.01745329
 
 # define KEY_W		13
 # define KEY_A		0
@@ -29,6 +30,7 @@
 # include "../libft/libft.h"
 # include <mlx.h>
 # include <math.h>
+# include <stdio.h>
 
 typedef struct s_img
 {
@@ -87,6 +89,10 @@ int		ft_frame_loop(t_game *game);
 int		ft_key_handle(int key, t_game *game);
 void	img_pix_put(t_img *img, int x, int y, int color);
 void	ft_cast_ray(t_game *g);
+float	ft_cast_hori(t_ray *ray, t_game *g, float x, float y);
+float	ft_cast_verti(t_ray *ray, t_game *g, float x, float y);
+void	ft_iter_offset(t_ray *ray, t_game *g, float xo, float yp);
+float	ft_ray_dist(t_game *g);
 
 void	ft_move_up(t_game *g);
 void	ft_move_down(t_game *g);

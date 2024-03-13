@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:54:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/12 16:36:06 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:53:39 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	ft_print_square(t_game *game, int w, int h, char c)
 	else
 		color= 6579300;
 	int i = 0; int j = 0;
-	while(i < 58) {
+	while(i < 62) {
 		j = 0;
-		while(j < 58) {
-			img_pix_put(game->img, (h*60) + i, (w*60) + j, color);
+		while(j < 62) {
+			img_pix_put(game->img, (h*64) + i, (w*64) + j, color);
 			++j;
 		}
 		++i;
@@ -37,7 +37,7 @@ void	ft_show_mini(t_game *game)
 	while (game->map.map[i]) {
 		j = 0;
 		while (game->map.map[i][j]) {
-//			if (game->map.map[i][j] == "1")
+//			if (game->map.map[i][j] == '1')
 			ft_print_square(game, i, j, game->map.map[i][j]);
 			j++;
 		}
@@ -63,15 +63,14 @@ void	ft_show_player(t_game *game)
 
 void ft_show_ray(t_game *g)
 {
-	//fin du viseur
-	int x1 = g->ray->mx; int y1 = g->ray->my;	
+	//fin de rayon
+	int x1 = g->ray->rx; int y1 = g->ray->ry;	
 	int lx = g->px; int ly = g->py;
 	
 	int dx = abs(x1 - lx);
     int dy = abs(y1 - ly);
     int sx, sy, err, e2;
 
-	ft_printf("la\n");
     if (lx < x1) {
         sx = 1;
     } else {
@@ -110,11 +109,6 @@ void ft_show_ray(t_game *g)
             ly += sy;
         }
     }
-	/*
-	img_pix_put(g->img, (int)lx, (int)ly,8882050);
-	img_pix_put(g->img, (int)lx+1, (int)ly, 8882050);
-	img_pix_put(g->img, (int)lx+2, (int)ly, 8882050);
-	*/
 }
 
 void ft_show_dir(t_game *g)

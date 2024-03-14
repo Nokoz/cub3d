@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:54:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/13 16:53:39 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:59:23 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,18 @@ void	ft_show_player(t_game *game)
 		for (int j = -4; j < 5; ++j)
 			img_pix_put(game->img, game->px + i, game->py + j, 2009780);
 	}
-	/*
-	mlx_pixel_put(game->mlx_ptr, game->win_ptr, game->px + 5, game->py , 2009780);
-	mlx_pixel_put(game->mlx_ptr, game->win_ptr, game->px + 5 , game->py + 1, 2009780);
-	mlx_pixel_put(game->mlx_ptr, game->win_ptr, game->px + 5 , game->py - 1, 2009780);
-	mlx_pixel_put(game->mlx_ptr, game->win_ptr, game->px + 6, game->py , 2009780);
-	mlx_pixel_put(game->mlx_ptr, game->win_ptr, game->px + 7, game->py , 2009780);
-	*/
+}
+
+void ft_draw_line(t_game *g, int x, int offset, float wall_h)
+{
+	int y1 = offset + wall_h;	
+	int ly = offset;
+	
+	while (ly < y1)
+	{
+		img_pix_put(g->img, x, ly, 16724530);
+		ly++;
+	}
 }
 
 void ft_show_ray(t_game *g)
@@ -76,94 +81,32 @@ void ft_show_ray(t_game *g)
     } else {
         sx = -1;
     }
-
     if (ly < y1) {
         sy = 1;
     } else {
         sy = -1;
     }
-
     err = dx - dy;
-
     while (1) {
 		img_pix_put(g->img, (int)lx, (int)ly, 3668530);
 
         if (lx == x1 && ly == y1) {
             break;
         }
-
         e2 = 2 * err;
-
         if (e2 > -dy) {
             err -= dy;
             lx += sx;
         }
-
         if (lx == x1 && ly == y1) {
 			img_pix_put(g->img, (int)lx, (int)ly, 3668530);
             break;
         }
-
         if (e2 < dx) {
             err += dx;
             ly += sy;
         }
     }
-}
-
-void ft_show_dir(t_game *g)
-{
-	//fin du viseur
-	int x1 = g->px + 15 * cos(g->pa); int y1 = g->py + 15 * sin(g->pa);	
-	int lx = g->px; int ly = g->py;
-	
-	int dx = abs(x1 - lx);
-    int dy = abs(y1 - ly);
-    int sx, sy, err, e2;
-
-    if (lx < x1) {
-        sx = 1;
-    } else {
-        sx = -1;
-    }
-
-    if (ly < y1) {
-        sy = 1;
-    } else {
-        sy = -1;
-    }
-
-    err = dx - dy;
-
-    while (1) {
-		img_pix_put(g->img, (int)lx, (int)ly, 16724530);
-
-        if (lx == x1 && ly == y1) {
-            break;
-        }
-
-        e2 = 2 * err;
-
-        if (e2 > -dy) {
-            err -= dy;
-            lx += sx;
-        }
-
-        if (lx == x1 && ly == y1) {
-			img_pix_put(g->img, (int)lx, (int)ly, 16724530);
-            break;
-        }
-
-        if (e2 < dx) {
-            err += dx;
-            ly += sy;
-        }
-    }
-	/*
-	img_pix_put(g->img, (int)lx, (int)ly,8882050);
-	img_pix_put(g->img, (int)lx+1, (int)ly, 8882050);
-	img_pix_put(g->img, (int)lx+2, (int)ly, 8882050);
-	*/
 }
 
 void	ft_draw_background(t_game *g)

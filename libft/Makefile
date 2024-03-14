@@ -62,11 +62,12 @@ OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 all: $(NAME)
 
 %.o:%.c
-	$(CC) $(FLAGS) -o $@ -c $<
+	@$(CC) $(FLAGS) -o $@ -c $<
+#	@echo "\033[0;32m[OK]\033[0m    \033[0;38;5;199mCompiling\033[0m $(<F)"
 
 $(NAME) : $(OBJS)
-	ar -rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	@ar -rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
 
 bonus : $(OBJS) $(OBJS_BONUS)
 	ar -rc $(NAME) $(OBJS) $(OBJS_BONUS)

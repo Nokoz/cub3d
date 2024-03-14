@@ -6,15 +6,15 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:28:32 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/13 17:13:33 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/14 13:07:55 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAY_H
 #define RAY_H
 
-# define H 800
-# define W 1600
+# define H 1080
+# define W 1920
 # define DR	0.01745329
 
 # define KEY_W		13
@@ -80,7 +80,6 @@ typedef struct s_game
 
 void	ft_init_win(t_game *game);
 void	ft_show_mini(t_game *game);
-void	ft_show_dir(t_game *game);
 void	ft_show_ray(t_game *game);
 void	ft_draw_background(t_game *game);
 void	ft_show_player(t_game *game);
@@ -93,13 +92,16 @@ float	ft_cast_hori(t_ray *ray, t_game *g, float x, float y);
 float	ft_cast_verti(t_ray *ray, t_game *g, float x, float y);
 void	ft_iter_offset(t_ray *ray, t_game *g, float xo, float yp);
 float	ft_ray_dist(t_game *g);
+void	ft_draw_line(t_game *g, int x, int y, float wall_h);
+float	ft_get_wall_h(t_game *g, float dist);
+void	ft_draw_ray(t_game *g, float wall_h, float line_o, int ray);
+void	ft_draw_walls(t_game *g, int ray);
 
 void	ft_move_up(t_game *g);
 void	ft_move_down(t_game *g);
 void	ft_move_left(t_game *g);
 void	ft_move_right(t_game *g);
-void	ft_rotate_left(t_game *g);
-void	ft_rotate_right(t_game *g);
+void	ft_rotate(t_game *g, int key);
 
 //wrapper
 void	*new_img(void *mlx_ptr);

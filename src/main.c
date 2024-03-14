@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/13 17:28:22 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/14 13:23:19 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,128 +53,66 @@ void	ft_init_win(t_game *game)
 
 int		ft_frame_loop(t_game *g)
 {
-	int i = -30;
 	g->img->img = new_img(g->mlx_ptr);
 	g->img->addr = get_addr(g->img);
+	int i = 0;
 
 		ft_draw_background(g);
-		ft_show_mini(g);
-		ft_show_player(g);
-		ft_show_dir(g);
-		g->ray->ra = g->pa-DR * 30;
+		g->ray->ra = g->pa - (DR * 40);
 		if (g->ray->ra < 0)
 			g->ray->ra += 2 * M_PI;
 		if (g->ray->ra > 2 * M_PI)
 			g->ray->ra -= 2 * M_PI;
-		while (i < 30)
+		while (i < 80)
 		{
 			if (g->ray->ra < 0)
 				g->ray->ra += 2 * M_PI;
 			if (g->ray->ra > 2 * M_PI)
 				g->ray->ra -= 2 * M_PI;
-			ft_ray_dist(g);
-			ft_show_ray(g);
+//			ft_ray_dist(g);
+			ft_draw_walls(g, i);
+//			ft_show_ray(g);
 			g->ray->ra += DR;
 			i++;
 		}
+		ft_show_mini(g);
+		ft_show_player(g);
 		put_img(g);
 		destroy_img(g);
 		return (0);
 }
 
-float	ft_ray_dist(t_game *g)
+void	ft_draw_walls(t_game *g, int ray)
 {
-	float	len_h, len_v;
-	int		end[2];
-	
-		len_h = ft_cast_hori(g->ray, g, g->px, g->py);
-		end[0] = g->ray->rx;
-		end[1] = g->ray->ry;
-		len_v = ft_cast_verti(g->ray, g, g->px, g->py);
-		if (len_h < len_v)
-		{
-			//update endpoint
-			g->ray->rx = end[0];
-			g->ray->ry = end[1];
-			return (len_h);
-		}
-		return (len_v);
+	float	dist;
+	float	wall_h;
+	float	line_o;
+
+	dist = ft_ray_dist(g);
+	wall_h = ft_get_wall_h(g, dist);
+	line_o = 540 - wall_h / 2;
+	ft_draw_ray(g, wall_h, line_o, ray);
 }
 
-void	ft_iter_offset(t_ray *ray, t_game *g, float xo, float yo)
+void	ft_draw_ray(t_game *g, float wall_h, float line_o, int ray)
 {
-	int x;
-	int y;
+	int	i;
 
-	ray->dof = 0;
-	while (ray->dof < 8)
+	i = 0;
+	while (i < 24)
 	{
-		x = (int) (ray->rx) >> 6;
-		y = (int) (ray->ry) >> 6;
-		if (x < 0 || y < 0 || x >= 5 || y >= 6 || g->map.map[y][x] == '1')
-			ray->dof = 8;
-		else
-		{
-			ray->rx += xo;
-			ray->ry += yo;
-			ray->dof += 1;
-		}
+		ft_draw_line(g, (ray * 24 + i), line_o, wall_h);
+		i++;
 	}
 }
 
-float	ft_cast_hori(t_ray *ray, t_game *g, float x, float y)
+float	ft_get_wall_h(t_game *g, float dist)
 {
-	float a_tan;
+	float	ret;
+	(void)g;
 
-//	ray->ra = g->pa; //to move out, each ray own angle
-	a_tan = -1 / tan(ray->ra);
-	if (ray->ra > (float)M_PI && ray->ra != (float) M_PI * 2) // looking up
-	{
-		ray->ry = (((int)y >> 6) << 6) - 0.0001f;
-		ray->rx = (y - ray->ry) * a_tan + x;
-		ray->yo = -64;
-	}
-	else if (ray->ra < (float)M_PI && ray->ra > 0 )// looking down
-	{
-		ray->ry = (((int)y >> 6) << 6) + 64;
-		ray->rx = (y - ray->ry) * a_tan + x;
-		ray->yo = 64;
-	}
-	if (ray->ra == 0 || ray->ra == (float)M_PI) // looking horizon
-	{
-		ray->rx = x;
-		ray->ry = y;
-		return(MAXFLOAT);
-	}
-	ray->xo = -ray->yo * a_tan;
-	ft_iter_offset(ray, g, ray->xo, ray->yo);
-	return (sqrtf(powf((ray->rx -x), 2) + powf((ray->ry - y), 2))); //ray len
-}
-
-float	ft_cast_verti(t_ray *ray, t_game *g, float x, float y)
-{
-	float n_tan;
-
-//	ray->ra = g->pa; //to move out, each ray own angle
-	n_tan = -tan(ray->ra);
-	if (ray->ra > (float)M_PI_2 && ray->ra < (3 * (float) M_PI_2)) // looking left
-	{
-		ray->rx = (((int)x >> 6) << 6) - 0.0001f;
-		ray->xo = -64;
-	}
-	else if (ray->ra < (float)M_PI_2 || ray->ra > (3 *(float)M_PI_2))// looking right
-	{
-		ray->rx = (((int)x >> 6) << 6) + 64;
-		ray->xo = 64;
-	}
-	ray->ry = (x - ray->rx) * n_tan + y;
-	if (ray->ra == (float)M_PI_2 || ray->ra == (3 * (float)M_PI_2)) // looking verticaly
-	{
-		ray->rx = x;
-		ray->ry = y;
-		return(MAXFLOAT);
-	}
-	ray->yo = -ray->xo * n_tan;
-	ft_iter_offset(ray, g, ray->xo, ray->yo);
-	return (sqrtf(powf((ray->rx -x), 2) + powf((ray->ry - y), 2))); //ray len
+	ret = ((30) * 1080) / dist;
+	if (ret > 1080)
+		return (1080);
+	return (ret);
 }

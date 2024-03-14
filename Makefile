@@ -4,27 +4,33 @@ LIBFT_PATH = ./libft
 
 LIBFT = $(LIBFT_PATH)/libft.a
 
-SRC_DIR = ./src/
+SRC_DIR = ./src
 
-OBJ_DIR = .objs/
+OBJ_DIR = .objs
 
 SRCS = $(shell find ./src -iname "*.c")
+#SRCS =	$(SRC_DIR)main.c \
+		$(SRC_DIR)mini_map.c \
+		$(SRC_DIR)move.c \
+		$(SRC_DIR)mlx_image_wrapper.c
 
-OBJ = $(SRCS: .c=.o)
+#OBJ = $(SRCS: .c=.o)
+OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
+
 CC = gcc
-HEAD = -L $(LIBFT_PATH) -lft
-CFLAGS = -Wall -Werror -Wextra #-fsanitize=address
+HEAD = -L$(LIBFT_PATH) -lmlx -framework OpenGL -framework Appkit
+CFLAGS = -I$(LIBFT_PATH) -Wall -Werror -Wextra #-fsanitize=address
 RM = /bin/rm -rf
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 		make -C $(LIBFT_PATH)
-		@$(CC) $(OBJ) $(HEAD) $(CFLAGS) -lmlx -framework OpenGL -framework Appkit -o $(NAME)
+		@$(CC) $(OBJ) $(HEAD) $(CFLAGS) -lft -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		@mkdir -p $(OBJ_DIR)
-		@$(CC) $(CFLAGS) $(HEAD) -c $< -o $@
+		@$(CC) $(CFLAGS) -c $< -o $@
 		@echo "\033[0;32m[OK]\033[0m    \033[0;38;5;199mCompiling\033[0m $(<F)"
 
 clean:

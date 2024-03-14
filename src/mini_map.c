@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:54:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/14 12:59:23 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:37:05 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,28 @@ void	ft_show_player(t_game *game)
 	}
 }
 
+int ft_get_color(int y, int x, char dir)
+{
+	(void)y;
+	(void)x;
+	(void)dir;
+	return (3617530);
+}
+
 void ft_draw_line(t_game *g, int x, int offset, float wall_h)
 {
 	int y1 = offset + wall_h;	
 	int ly = offset;
+	int	i = 0;
+	int	color = /*0; */16724530;
+	(void)g;
 	
-	while (ly < y1)
+	while (ly + i < y1)
 	{
-		img_pix_put(g->img, x, ly, 16724530);
-		ly++;
+//		color = ft_get_color(i / wall_h, [(rx/2) % 32], [lookdirection]);
+//		color = ft_get_color(i / wall_h, (int)(g->ray->rx/2) % 32, 'N');
+		img_pix_put(g->img, x, ly + i, color);
+		i++;
 	}
 }
 

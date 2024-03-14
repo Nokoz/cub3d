@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:48:49 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/14 10:42:10 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:34:42 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ float	ft_cast_hori(t_ray *ray, t_game *g, float x, float y)
 {
 	float a_tan;
 
-//	ray->ra = g->pa; //to move out, each ray own angle
 	a_tan = -1 / tan(ray->ra);
 	if (ray->ra > (float)M_PI && ray->ra != (float) M_PI * 2) // looking up
 	{

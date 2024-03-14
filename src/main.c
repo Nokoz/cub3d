@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/14 13:23:19 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:35:04 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,15 @@ void	ft_draw_walls(t_game *g, int ray)
 	float	dist;
 	float	wall_h;
 	float	line_o;
+	float	ca;
 
+	ca = g->pa - g->ray->ra; //fisheye
 	dist = ft_ray_dist(g);
+	if (ca < 0)
+		ca += 2 * M_PI;
+	if (ca > 2 * M_PI)
+		ca -= 2 * M_PI;
+	dist *= cos(ca);
 	wall_h = ft_get_wall_h(g, dist);
 	line_o = 540 - wall_h / 2;
 	ft_draw_ray(g, wall_h, line_o, ray);

@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:54:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/18 10:15:36 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/18 12:35:38 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	ft_print_square(t_game *game, int w, int h, char c)
 		color = 13158600;
 	else
 		color = 6579300;
-	while (i < 62)
+	while (i < 60)
 	{
 		j = 0;
-		while (j < 62)
+		while (j < 60)
 		{
 			img_pix_put(game->img, (h * 64) + i, (w * 64) + j, color);
 			++j;

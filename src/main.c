@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/14 15:35:04 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:09:25 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(int ac, char **av)
 	game = malloc(sizeof(t_game));
 	img = malloc(sizeof(t_img));
 	ray = malloc(sizeof(t_ray));
-	char *mapy = "11111\n10001\n10101\n10001\n10001\n11111\n";
+//	char *mapy = "1111111\n1100001\n1000101\n1000001\n1100001\n1111111\n";
+	char *mapy = "11111111111111111111111111111\n11110111111111011101010010001\n11000000110101011100000010001\n10000000000000001100000010001\n10000000000000000001010000001\n11000001110101011111011110N0111\n11110111 1110101 101111010001\n11111111 1111111 111111111111\n";
 
 	map.map = ft_split(mapy, '\n');
 	game->map = map;
@@ -69,14 +70,14 @@ int		ft_frame_loop(t_game *g)
 				g->ray->ra += 2 * M_PI;
 			if (g->ray->ra > 2 * M_PI)
 				g->ray->ra -= 2 * M_PI;
-//			ft_ray_dist(g);
+	//		ft_ray_dist(g);
 			ft_draw_walls(g, i);
-//			ft_show_ray(g);
+		//	ft_show_ray(g);
 			g->ray->ra += DR;
 			i++;
 		}
-		ft_show_mini(g);
-		ft_show_player(g);
+		//ft_show_mini(g);
+		//ft_show_player(g);
 		put_img(g);
 		destroy_img(g);
 		return (0);

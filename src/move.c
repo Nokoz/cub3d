@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 08:48:20 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/14 09:55:43 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:18:00 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 void	ft_move_down(t_game *g)
 {
 	//check possible
-	
-	g->py-=g->pdy;
-	g->px-=g->pdx;
+	g->py -= g->pdy;
+	g->px -= g->pdx;
 }
 
 void	ft_move_up(t_game *g)
 {
 	//check possible
-	
-	g->px+=g->pdx;
-	g->py+=g->pdy;
+	g->px += g->pdx;
+	g->py += g->pdy;
 }
 
 void	ft_move_left(t_game *g)
@@ -39,7 +37,6 @@ void	ft_move_left(t_game *g)
 void	ft_move_right(t_game *g)
 {
 	//check possible
-	
 	g->px += -sin(g->pa) * 5;
 	g->py += cos(g->pa) * 5;
 }
@@ -64,7 +61,7 @@ void	ft_rotate(t_game *g, int key)
 	}
 }
 
-int		ft_key_handle(int key, t_game *game)
+int	ft_key_handle(int key, t_game *game)
 {
 	if (key == KEY_W)
 		ft_move_up(game);

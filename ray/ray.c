@@ -6,11 +6,11 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:48:49 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/18 14:06:01 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:11:52 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ray.h"
+#include "../INCS/common.h"
 
 float	ft_ray_dist(t_game *g)
 {

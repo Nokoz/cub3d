@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:28:32 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/14 13:07:55 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:33:52 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # define H 1080
 # define W 1920
+# define MAPX 29
+# define MAPY 8
 # define DR	0.01745329
 
 # define KEY_W		13
@@ -76,9 +78,12 @@ typedef struct s_game
 	t_map		map;
 	t_img		*img;
 	t_ray		*ray;
+	void		*data;
 }				t_game;
 
-void	ft_init_win(t_game *game);
+//int		noko(t_datas *d);
+//void	ft_init_win(t_datas *d);
+float 	ft_start_dri(char c);
 void	ft_show_mini(t_game *game);
 void	ft_show_ray(t_game *game);
 void	ft_draw_background(t_game *game);

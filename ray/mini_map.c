@@ -6,11 +6,11 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:54:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/18 12:35:38 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:59:43 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ray.h"
+#include "../INCS/common.h"
 
 void	ft_print_square(t_game *game, int w, int h, char c)
 {
@@ -51,14 +51,22 @@ void	ft_show_mini(t_game *game)
 		i++;
 	}
 }
-
-void	ft_show_player(t_game *game)
+void ft_show_player(t_game *game)
 {
-	for (int i = -4; i < 5; ++i)
-	{
-		for (int j = -4; j < 5; ++j)
-			img_pix_put(game->img, game->px + i, game->py + j, 2009780);
-	}
+    int i;
+    int j;
+
+	i = -4;
+    while (i < 5)
+    {
+        j = -4;
+        while (j < 5)
+        {
+            img_pix_put(game->img, game->px + i, game->py + j, 2009780);
+            j++;
+        }
+        i++;
+    }
 }
 
 int ft_get_color(int y, int x, char dir)
@@ -84,7 +92,9 @@ void ft_draw_line(t_game *g, int x, int offset, float wall_h)
 	while (ly + i < y1)
 	{
 		//		color = ft_get_color(i / wall_h, [(rx/2) % 32], [lookdirection]);
-		//		color = ft_get_color(i / wall_h, (int)(g->ray->rx/2) % 32, 'N');
+//		color = ft_get_color((int)(i / wall_h) * 64, (int)(g->ray->rx/2) % 64, 'N');
+		color = draw_texture(g->data, (int)(g->ray->rx/2) % 128, (int)(i / wall_h) * 128);
+//		color = draw_texture(g->data, x % 128, (int)(i / wall_h) * 128);
 		img_pix_put(g->img, x, ly + i, color);
 		i++;
 	}

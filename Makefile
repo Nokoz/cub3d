@@ -4,22 +4,20 @@ LIBFT_PATH = ./libft
 
 LIBFT = $(LIBFT_PATH)/libft.a
 
-SRC_DIR = ./src
+SRC_DIR = ./ray
 
 OBJ_DIR = .objs
 
-SRCS = $(shell find ./src -iname "*.c")
-#SRCS =	$(SRC_DIR)main.c \
-		$(SRC_DIR)mini_map.c \
-		$(SRC_DIR)move.c \
-		$(SRC_DIR)mlx_image_wrapper.c
+SRCS = main.c \
+	$(shell find ./ray -iname "*.c") \
+	$(shell find ./PARSING -iname "*.c") \
+	$(shell find ./GET_NEXT_LINE -iname "*.c")
 
-#OBJ = $(SRCS: .c=.o)
 OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 CC = gcc
 HEAD = -L$(LIBFT_PATH) -lmlx -framework OpenGL -framework Appkit
-CFLAGS = -I$(LIBFT_PATH) -Wall -Werror -Wextra #-fsanitize=address
+CFLAGS =  -IINCS -I$(LIBFT_PATH) -Wall -Werror -Wextra #-fsanitize=address
 RM = /bin/rm -rf
 
 all: $(NAME)

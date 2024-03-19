@@ -6,11 +6,11 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:15:05 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/14 13:06:23 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:12:04 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ray.h"
+#include "../INCS/common.h"
 
 void	*new_img(void *mlx_ptr)
 {

@@ -6,40 +6,91 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 08:48:20 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/18 10:18:00 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:12:06 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ray.h"
+#include "../INCS/common.h"
+bool	ft_collision(t_game *g, int key);
+bool	ft_collision_side(t_game *g, int key);
 
 void	ft_move_down(t_game *g)
 {
 	//check possible
-	g->py -= g->pdy;
-	g->px -= g->pdx;
+	if (ft_collision(g, KEY_S))
+	{
+		g->py -= g->pdy;
+		g->px -= g->pdx;
+	}
 }
 
 void	ft_move_up(t_game *g)
 {
 	//check possible
-	g->px += g->pdx;
-	g->py += g->pdy;
+	if (ft_collision(g, KEY_W))
+	{
+		g->px += g->pdx;
+		g->py += g->pdy;
+	}
 }
 
 void	ft_move_left(t_game *g)
 {
 	//check possible
 //(sin pa ; -cos pa)	
-	g->px += sin(g->pa) * 5;
-	g->py += -cos(g->pa) * 5;
+	if (ft_collision_side(g, KEY_A))
+	{
+		g->px += sin(g->pa) * 5;
+		g->py += -cos(g->pa) * 5;
+	}
 }
 
 void	ft_move_right(t_game *g)
 {
 	//check possible
-	g->px += -sin(g->pa) * 5;
-	g->py += cos(g->pa) * 5;
+	if (ft_collision_side(g, KEY_D))
+	{
+		g->px += -sin(g->pa) * 5;
+		g->py += cos(g->pa) * 5;
+	}
 }
+
+bool	ft_collision(t_game *g, int key)
+{
+	float	dist;
+	float	x;
+	float	y;
+	float	a;
+
+	a = g->pa;
+	if (key == KEY_S)
+		a += 180.0;
+	dist = 10.0;
+	x = g->px + dist * cos(a);
+	y = g->py + dist * sin(a);
+	if (g->map.map[(int)y >> 6 ][(int)x >> 6] == '1')
+		return (false);
+	return (true);
+}
+
+bool	ft_collision_side(t_game *g, int key)
+{
+	float	dist;
+	float	x;
+	float	y;
+	float	a;
+
+	a = g->pa - (M_PI / 2);
+	if (key == KEY_D)
+		a = g->pa + (M_PI / 2);
+	dist = 10.0;
+	x = g->px + dist * cos(a);
+	y = g->py + dist * sin(a);
+	if (g->map.map[(int)y >> 6 ][(int)x >> 6] == '1')
+		return (false);
+	return (true);
+}
+
 
 void	ft_rotate(t_game *g, int key)
 {

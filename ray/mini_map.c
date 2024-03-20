@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:54:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/20 16:42:13 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:24:33 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void ft_draw_line(t_game *g, int x, int offset, float wall_h)
 	step = 128 / wall_h;
 	texpos = (ly - 540 + wall_h/2) * step;
 
-//	texX = (g->ray->ry - floor(g->ray->ry)) * 128;
-	texX = ft_set_texture_x(g);
+	texX = (int) (g->ray->ry / 2.0) % 128;
+//	texX = ft_set_texture_x(g);
 	printf("TX = %d\n", texX);
 	while (ly + i < y1)
 	{
@@ -106,14 +106,14 @@ int	ft_set_texture_x(t_game *g)
 	int	tx;
 	if (g->ray->side == 0)
 	{
-		tx = (g->ray->rx - floor(g->ray->rx)) * 128;
-		//if (g->ray->ra < (float)M_PI && g->ray->ra > 0) // looking down
-		if (g->ray->ra > (float)M_PI && g->ray->ra != (float) M_PI * 2) // looking up
+		tx = (g->ray->ry - floor(g->ray->ry)) * 128;
+//		if (g->ray->ra > (float)M_PI && g->ray->ra != (float) M_PI * 2) // looking up
+		if (g->ray->ra < (float)M_PI && g->ray->ra > 0) // looking down
 			tx = (128 - tx - 1);
 	}
 	else
 	{
-		tx = (g->ray->ry - floor(g->ray->ry)) * 128;
+		tx = (g->ray->rx - floor(g->ray->rx)) * 128;
 		if (g->ray->ra < (float)M_PI_2 || g->ray->ra > (3 * (float)M_PI_2))// looking right
 			tx = (128 - tx - 1);
 	}

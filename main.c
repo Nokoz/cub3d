@@ -32,12 +32,5 @@ t_datas	*sarah(int argc, char **argv)
 	init_variables(datas, lib);
 	check_map(datas);
 	handle_mlx(datas);
-
-	// int	i = 0;
-	// while (datas->map[i])
-	// {
-	// 	printf("map : %s\n", datas->map[i]);
-	// 	i++;
-	// }
 	return (datas);
 }

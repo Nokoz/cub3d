@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:32:57 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/19 14:51:25 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/20 14:14:13 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,14 @@ char	**copy_map(char **doc, int i, t_datas *datas)
 	}
 	mappy[j] = NULL;
 	return (mappy);
+}
+
+int	exist(char *wall_side_str, t_datas *datas)
+{
+	if (wall_side_str != NULL)
+	{
+		free_all(datas);
+		error_exit(E_DATAS);
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:09 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/19 15:37:58 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/20 14:03:05 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@
 # define E_FILE "ERROR !\nCause : wrong format of textfile, need .cub\n"
 # define E_SYNTAXE "ERROR !\nCause : wrong syntaxe for floor or ceiling\n"
 # define E_FD "ERROR !\nCause : opening of fd failed\n"
-# define E_MAP "ERROR !\nCause : invalid map\n"
+# define E_MAP "ERROR !\nCause : no map or invalid map\n"
 # define E_DOC "ERROR !\nCause : wrong structure of doc .cub\n"
+# define E_EMPTY "ERROR !\nCause : the .cub is empty\n"
 # define E_MALLOC "ERROR !\nCause : malloc failed\n"
 # define E_COLOR "ERROR !\nCause : Wrong value for the color\n"
+# define E_DATAS "ERROR !\nCause : Too much colors or textures infos in .cub\n"
 # define E_FD "ERROR !\nCause : opening of fd failed\n"
-# define E_PLAYER "ERROR !\nCause : too much player for this game\n"
+# define E_PLAYER "ERROR !\nCause : wrong number of player for this game\n"
 # define E_PATH "ERROR !\nCause : the map is not closed or contain space\n"
 # define E_MLX "ERROR !\nCause : the MinilibX is crashed\n"
 # define E_XPM "ERROR !\nCause : image can't download\n"
@@ -117,6 +119,7 @@ int		nbr_tab(char *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_atoi(const char *str);
 char	*ft_strdup(const char *s1);
+int		exist(char *wall_side_str, t_datas *datas);
 
 // ERROR & FREE //
 void	error_exit(char *str);

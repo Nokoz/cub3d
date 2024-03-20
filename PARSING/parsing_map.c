@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:35:28 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/19 14:51:54 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/20 14:07:16 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	nbr_of_player(t_datas *datas)
 		}
 		y++;
 	}
-	if (datas->nbr_of_player > 1)
+	if (datas->nbr_of_player != 1)
 		return (1);
 	return (0);
 }

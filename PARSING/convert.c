@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 14:17:56 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/19 14:49:59 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/20 14:04:15 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ char	**convert_doc(char *lib, t_datas *datas)
 		error_exit(E_FD);
 	}
 	strings_collected = collect_strings(fd);
+	if (!strings_collected)
+	{
+		free(strings_collected);
+		free_all(datas);
+		close(fd);
+		error_exit(E_EMPTY);
+	}
 	doc = ft_split(strings_collected, '\n');
 	free(strings_collected);
 	close(fd);

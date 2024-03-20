@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:05:33 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/19 14:07:34 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/20 09:37:29 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 
 # include "../inc/ray.h"
 # include "cub3d.h"
+# include "get_next_line.h"
 
 #endif

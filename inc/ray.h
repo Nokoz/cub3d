@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:28:32 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/19 15:33:52 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:42:15 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # define W 1920
 # define MAPX 29
 # define MAPY 8
-# define DR	0.01745329
+//# define DR	0.01745329
+# define DR	0.008726645
+# define STRP_W 12
 
 # define KEY_W		13
 # define KEY_A		0
@@ -56,6 +58,8 @@ typedef struct s_ray
 	int		mx;
 	int		my;
 	int		mp;
+	int		side;
+	char	wall;
 	//depth of field
 	int		dof;
 	float	rx;
@@ -97,6 +101,7 @@ float	ft_cast_hori(t_ray *ray, t_game *g, float x, float y);
 float	ft_cast_verti(t_ray *ray, t_game *g, float x, float y);
 void	ft_iter_offset(t_ray *ray, t_game *g, float xo, float yp);
 float	ft_ray_dist(t_game *g);
+void	ft_set_wall_text(t_ray *r);
 void	ft_draw_line(t_game *g, int x, int y, float wall_h);
 float	ft_get_wall_h(t_game *g, float dist);
 void	ft_draw_ray(t_game *g, float wall_h, float line_o, int ray);

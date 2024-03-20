@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:48:49 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/19 14:11:52 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:42:17 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ float	ft_ray_dist(t_game *g)
 	len_h = ft_cast_hori(g->ray, g, g->px, g->py);
 	end[0] = g->ray->rx;
 	end[1] = g->ray->ry;
+	g->ray->side = 1;
 	len_v = ft_cast_verti(g->ray, g, g->px, g->py);
 	if (len_h < len_v)
 	{
+		g->ray->side = 0;
 		//update endpoint
 		g->ray->rx = end[0];
 		g->ray->ry = end[1];

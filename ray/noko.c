@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/19 15:41:54 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:41:30 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ int		ft_frame_loop(t_game *g)
 	int i = 0;
 
 		ft_draw_background(g);
-		g->ray->ra = g->pa - (DR * 40);
+		g->ray->ra = g->pa - (DR * 80);
 		if (g->ray->ra < 0)
 			g->ray->ra += 2 * M_PI;
 		if (g->ray->ra > 2 * M_PI)
 			g->ray->ra -= 2 * M_PI;
-		while (i < 80)
+		while (i < 160)
 		{
 			if (g->ray->ra < 0)
 				g->ray->ra += 2 * M_PI;
@@ -103,6 +103,7 @@ void	ft_draw_walls(t_game *g, int ray)
 
 	ca = g->pa - g->ray->ra; //fisheye
 	dist = ft_ray_dist(g);
+	ft_set_wall_text(g->ray);
 	if (ca < 0)
 		ca += 2 * M_PI;
 	if (ca > 2 * M_PI)
@@ -113,14 +114,46 @@ void	ft_draw_walls(t_game *g, int ray)
 	ft_draw_ray(g, wall_h, line_o, ray);
 }
 
+void	ft_set_wall_text(t_ray *r)
+{
+	if (r->ra <= 2*M_PI && r->ra >= M_PI / 2)
+	{
+		if (r->side == 0)
+			r->wall = 'n';
+		else
+			r->wall = 'e';
+	}
+	else if (r->ra <= M_PI / 2 && r->ra >= M_PI)
+	{
+		if (r->side == 0)
+			r->wall = 'n';
+		else
+			r->wall = 'w';
+	}
+	else if (r->ra <= M_PI && r->ra >= 3 * (M_PI / 2))
+	{
+		if (r->side == 0)
+			r->wall = 's';
+		else
+			r->wall = 'w';
+	}
+	else if (r->ra <= 3 * (M_PI / 2) && r->ra >= 2 * M_PI)
+	{
+		if (r->side == 0)
+			r->wall = 's';
+		else
+			r->wall = 'e';
+	}
+}
+
 void	ft_draw_ray(t_game *g, float wall_h, float line_o, int ray)
 {
 	int	i;
 
 	i = 0;
-	while (i < 24)
+	while (i < STRP_W)
 	{
-		ft_draw_line(g, (ray * 24 + i), line_o, wall_h);
+		ft_draw_line(g, (ray * STRP_W + i), line_o, wall_h);
 		i++;
 	}
 }

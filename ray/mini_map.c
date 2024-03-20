@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:54:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/19 15:59:43 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/20 11:34:28 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,25 @@ void ft_draw_line(t_game *g, int x, int offset, float wall_h)
 	int ly;
 	int	i;
 	int	color;
-	(void)g;
+	int	texY;
+	float	texX;
+	double step;
+	double texpos;
 
 	y1 = offset + wall_h;
 	ly = offset;
 	i = 0; 
 	color =  /*0; */16724530;
+
+	step = 128 / wall_h;
+	texpos = (ly - 540 + wall_h/2) * step;
+
+	texX = (int)(g->ray->rx / 2) % 128;
 	while (ly + i < y1)
 	{
-		//		color = ft_get_color(i / wall_h, [(rx/2) % 32], [lookdirection]);
-//		color = ft_get_color((int)(i / wall_h) * 64, (int)(g->ray->rx/2) % 64, 'N');
-		color = draw_texture(g->data, (int)(g->ray->rx/2) % 128, (int)(i / wall_h) * 128);
-//		color = draw_texture(g->data, x % 128, (int)(i / wall_h) * 128);
+		texY = (int)texpos & (128-1);
+		texpos += step;
+		color = draw_texture(g->data, (int)texX, texY);
 		img_pix_put(g->img, x, ly + i, color);
 		i++;
 	}

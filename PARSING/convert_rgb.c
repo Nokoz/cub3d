@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:48:17 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/19 14:50:15 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:54:15 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ void	assign_rgb(t_datas *datas, char *color, char x, char **doc)
 {
 	char	**datas_rgb;
 	int		res[3];
+	int		neg_or_alpha;
 	int		i;
 
 	i = 0;
 	datas_rgb = ft_split(color + 2, ',');
 	while (datas_rgb[i])
 	{
-		if (is_neg_or_alpha(datas_rgb[i]) == 1)
-			error_exit("We only take positives and digits values\n");
+		neg_or_alpha = is_neg_or_alpha(datas_rgb[i]);
 		res[i] = ft_atoi(datas_rgb[i]);
-		if (res[i] < 0 || res[i] > 255)
+		if (res[i] < 0 || res[i] > 255 || neg_or_alpha == 1)
 		{
 			ft_free_2d_char(&doc);
 			ft_free_2d_char(&datas_rgb);

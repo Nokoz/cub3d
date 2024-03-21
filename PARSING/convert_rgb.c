@@ -6,11 +6,11 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:48:17 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 11:54:15 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 14:23:45 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 int	rgbtoint(int r, int g, int b)
 {

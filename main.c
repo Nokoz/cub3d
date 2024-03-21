@@ -1,4 +1,4 @@
-#include "INCS/common.h"
+#include "../INCS/cub3d.h"
 
 t_datas	*sarah(int argc, char **argv);
 

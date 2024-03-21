@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_image_wrapper.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
+/*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:15:05 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/19 14:12:04 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:51:31 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 void	*new_img(void *mlx_ptr)
 {

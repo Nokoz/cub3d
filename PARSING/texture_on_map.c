@@ -6,11 +6,11 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:17:03 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 11:25:27 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 14:24:26 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 int	draw_texture(t_datas *datas, int x, int y)
 {

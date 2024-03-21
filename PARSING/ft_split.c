@@ -6,11 +6,11 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:08:37 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/19 14:50:51 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:23:53 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 static int	is_sep(char s, char c)
 {

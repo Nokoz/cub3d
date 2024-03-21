@@ -6,11 +6,11 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:32:57 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/20 14:14:13 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 14:23:58 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 int	is_map(char *str)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rotation_collision.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
+/*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 09:57:09 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 10:02:02 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:52:01 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 bool	ft_collision(t_game *g, int key)
 {

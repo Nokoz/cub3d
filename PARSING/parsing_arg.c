@@ -6,11 +6,11 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:48:50 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/19 14:51:41 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:24:04 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 static int	ft_strcmp_mod(char *s1, char *s2)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   noko.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
+/*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 10:46:35 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:13:08 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 int	noko(t_datas *d)
 {
@@ -75,7 +75,7 @@ int	ft_frame_loop(t_game *g, t_datas *d)
 			g->ray->ra += 2 * M_PI;
 		if (g->ray->ra > 2 * M_PI)
 			g->ray->ra -= 2 * M_PI;
-		ft_draw_walls(g, i);
+		ft_draw_walls(d, i);
 		g->ray->ra += DR;
 		i++;
 	}

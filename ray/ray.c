@@ -3,37 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
+/*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:48:49 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 10:15:42 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:21:46 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
-float	ft_ray_dist(t_game *g)
+float	ft_ray_dist(t_datas *d)
 {
 	float	len_h;
 	float	len_v;
 	int		end[2];
 
-	len_h = ft_cast_hori(g->ray, g, g->px, g->py);
-	end[0] = g->ray->rx;
-	end[1] = g->ray->ry;
-	g->ray->side = 1;
-	len_v = ft_cast_verti(g->ray, g, g->px, g->py);
+	len_h = ft_cast_hori(d->game->ray, d, d->game->px, d->game->py);
+	end[0] = d->game->ray->rx;
+	end[1] = d->game->ray->ry;
+	d->game->ray->side = 1;
+	len_v = ft_cast_verti(d->game->ray, d, d->game->px, d->game->py);
 	if (len_h < len_v)
 	{
-		g->ray->side = 0;
-		g->ray->rx = end[0];
-		g->ray->ry = end[1];
+		d->game->ray->side = 0;
+		d->game->ray->rx = end[0];
+		d->game->ray->ry = end[1];
 		return (len_h);
 	}
 	return (len_v);
 }
 
-void	ft_iter_offset(t_ray *ray, t_game *g, float xo, float yo)
+void	ft_iter_offset(t_ray *ray, t_datas *datas, float xo, float yo)
 {
 	int	x;
 	int	y;
@@ -43,8 +43,8 @@ void	ft_iter_offset(t_ray *ray, t_game *g, float xo, float yo)
 	{
 		x = (int)(ray->rx) >> 6;
 		y = (int)(ray->ry) >> 6;
-		if (x < 0 || y < 0 || x >= g->map.x || y >= g->map.y \
-				|| g->map.map[y][x] == '1')
+		if (x < 0 || y < 0 || x >= datas->game->map.x
+			|| y >= datas->game->map.y || datas->game->map.map[y][x] == '1')
 			ray->dof = 20;
 		else
 		{
@@ -55,7 +55,7 @@ void	ft_iter_offset(t_ray *ray, t_game *g, float xo, float yo)
 	}
 }
 
-float	ft_cast_hori(t_ray *ray, t_game *g, float x, float y)
+float	ft_cast_hori(t_ray *ray, t_datas *datas, float x, float y)
 {
 	float	a_tan;
 
@@ -79,11 +79,11 @@ float	ft_cast_hori(t_ray *ray, t_game *g, float x, float y)
 		return (MAXFLOAT);
 	}
 	ray->xo = -ray->yo * a_tan;
-	ft_iter_offset(ray, g, ray->xo, ray->yo);
+	ft_iter_offset(ray, datas, ray->xo, ray->yo);
 	return (sqrtf(powf((ray->rx - x), 2) + powf((ray->ry - y), 2)));
 }
 
-float	ft_cast_verti(t_ray *ray, t_game *g, float x, float y)
+float	ft_cast_verti(t_ray *ray, t_datas *datas, float x, float y)
 {
 	float	n_tan;
 
@@ -106,6 +106,6 @@ float	ft_cast_verti(t_ray *ray, t_game *g, float x, float y)
 		return (MAXFLOAT);
 	}
 	ray->yo = -ray->xo * n_tan;
-	ft_iter_offset(ray, g, ray->xo, ray->yo);
+	ft_iter_offset(ray, datas, ray->xo, ray->yo);
 	return (sqrtf(powf((ray->rx - x), 2) + powf((ray->ry - y), 2)));
 }

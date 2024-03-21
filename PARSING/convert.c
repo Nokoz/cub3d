@@ -6,11 +6,11 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 14:17:56 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/20 14:04:15 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 13:44:58 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 static char	*collect_strings(int fd)
 {

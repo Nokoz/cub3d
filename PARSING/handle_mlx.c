@@ -6,11 +6,11 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 10:48:12 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 11:20:34 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 14:23:56 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 int	close_event(t_datas *datas)
 {

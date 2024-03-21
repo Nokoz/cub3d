@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
+/*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 08:48:20 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 10:48:07 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:51:37 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 void	ft_move_down(t_game *g)
 {

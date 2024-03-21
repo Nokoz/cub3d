@@ -6,11 +6,11 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:49:04 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/20 14:06:37 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 14:24:01 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 static void	finding_textures(char **str, int i, t_datas *d)
 {

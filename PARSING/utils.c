@@ -6,11 +6,11 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:47:21 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/19 14:52:36 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:24:32 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCS/common.h"
+#include "../INCS/cub3d.h"
 
 void	error_exit(char *str)
 {

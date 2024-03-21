@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 14:13:08 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 15:57:25 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	noko(t_datas *d)
 	d->game->pdy = sin(d->game->pa) * 5;
 	ft_init_win(d);
 	mlx_hook(d->game->win_ptr, 02, 1L << 0, ft_key_handle, d);
-//	mlx_loop_hook(d->game->mlx_ptr, ft_frame_loop, d->game);
 	mlx_loop(d->game->mlx_ptr);
 	return (0);
 }

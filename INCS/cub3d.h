@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:09 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 10:59:03 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:21:24 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int		noko(t_datas *d);
 void	ft_draw_background(t_datas * data);
 int		ft_frame_loop(t_game *game, t_datas *d);
 int		ft_key_handle(int key, t_datas * d);
+
 // HANDLE MLX //
 int		handle_mlx(t_datas *datas);
 int		assign_textures(t_datas *d);

@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 10:48:12 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/19 15:01:18 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:20:34 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,6 @@ int	close_event(t_datas *datas)
 {
 	free_all(datas);
 	exit(0);
-}
-
-int	key_event(int keycode, void *param)
-{
-	t_datas	*datas;
-
-	datas = (t_datas *)param;
-	if (keycode == 53)
-	{
-		mlx_destroy_window(datas->mlx, datas->win);
-		exit (0);
-	}
-	// rajouter partie Guillaume
-	return (0);
 }
 
 int	handle_mlx(t_datas *datas)
@@ -48,9 +34,6 @@ int	handle_mlx(t_datas *datas)
 		error_exit(E_WIN);
 	}
 	assign_textures(datas);
-	//draw_texture(datas, x, y);
-//	mlx_hook(datas->win, 17, 0, close_event, datas);
-//	mlx_hook(datas->win, 2, 0, key_event, datas);
-//	mlx_loop(datas->mlx);
+	mlx_hook(datas->win, 17, 0, close_event, datas);
 	return (0);
 }

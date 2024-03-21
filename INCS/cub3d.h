@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:09 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 15:39:25 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 16:19:14 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ typedef struct s_game
 	void		*data;
 }				t_game;
 
-typedef struct s_texture_struct {
+typedef struct s_texture_struct
+{
 	void	*xpm;
 	char	*str;
 	char	*data;
@@ -117,21 +118,24 @@ typedef struct s_texture_struct {
 	int		endian;
 }				t_texture_struct;
 
-typedef struct s_texture {
+typedef struct s_texture
+{
 	t_texture_struct	*no;
 	t_texture_struct	*so;
 	t_texture_struct	*we;
 	t_texture_struct	*ea;
 }				t_texture;
 
-typedef struct s_rgb {
+typedef struct s_rgb
+{
 	char	*str_floor;
 	char	*str_sky;
 	int		floor;
 	int		sky;
 }				t_rgb;
 
-typedef struct s_datas {
+typedef struct s_datas
+{
 	t_texture	*textures;
 	t_rgb		*rgb_datas;
 	t_game		*game;

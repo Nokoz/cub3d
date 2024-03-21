@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:32:57 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 15:23:48 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 16:19:36 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_map(char *str)
 	while (str[i])
 	{
 		if (!(str[i] == '1' || str[i] == '0' || str[i] == 'N' || str[i] == 'S'
-				|| str[i] == 'W' || str[i] == 'E' || str[i] == 32 
+				|| str[i] == 'W' || str[i] == 'E' || str[i] == 32
 				|| str[i] == '\t'))
 			return (1);
 		i++;

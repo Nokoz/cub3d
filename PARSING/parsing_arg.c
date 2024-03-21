@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:48:50 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 14:24:04 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 16:19:48 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ int	assign_textures(t_datas *d)
 {
 	d->textures->no->xpm = mlx_xpm_file_to_image(d->mlx,
 			d->textures->no->str, &d->textures->no->w, &d->textures->no->h);
-	d->textures->so->xpm = mlx_xpm_file_to_image(d->mlx, d->textures->so->str, 
+	d->textures->so->xpm = mlx_xpm_file_to_image(d->mlx, d->textures->so->str,
 			&d->textures->so->w, &d->textures->so->h);
-	d->textures->we->xpm = mlx_xpm_file_to_image(d->mlx, d->textures->we->str, 
+	d->textures->we->xpm = mlx_xpm_file_to_image(d->mlx, d->textures->we->str,
 			&d->textures->we->w, &d->textures->we->h);
-	d->textures->ea->xpm = mlx_xpm_file_to_image(d->mlx, d->textures->ea->str, 
+	d->textures->ea->xpm = mlx_xpm_file_to_image(d->mlx, d->textures->ea->str,
 			&d->textures->ea->w, &d->textures->ea->h);
 	if (!d->textures->ea->xpm || !d->textures->no->xpm
 		|| !d->textures->so->xpm || !d->textures->we->xpm)

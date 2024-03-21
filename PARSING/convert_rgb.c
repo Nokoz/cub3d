@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:48:17 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 15:16:40 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 16:41:07 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	rgbtoint(int r, int g, int b)
 {
-	return ((r * 65536) + (g * 256) + b);
+	return ((r << 16) + (g << 8) + b);
 }
 
 static int	is_neg_or_alpha(char *str)
@@ -41,7 +41,7 @@ void	assign_rgb(t_datas *datas, char *color, char x, char **doc)
 	int		i;
 
 	i = 0;
-	datas_rgb = ft_split(color + 2, ',');
+	datas_rgb = ft_split(color, ',');
 	while (datas_rgb[i])
 	{
 		neg_or_alpha = is_neg_or_alpha(datas_rgb[i]);

@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:48:26 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 14:23:26 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 15:41:17 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_draw_walls(t_datas *datas, int ray)
 		ca -= 2 * M_PI;
 	dist *= cos(ca);
 	wall_h = ft_get_wall_h(datas, dist);
-	line_o = 540 - wall_h / 2;
+	line_o = H / 2 - wall_h / 2;
 	ft_draw_ray(datas, wall_h, line_o, ray);
 }
 
@@ -66,13 +66,13 @@ float	ft_get_wall_h(t_datas *datas, float dist)
 {
 	float	ret;
 
-	ret = ((40) * 1080) / dist;
-	datas->game->step = 128 / ret; //texture size
+	ret = ((40) * H) / dist;
+	datas->game->step = datas->textures->no->h / ret;
 	datas->game->ty_off = 0;
-	if (ret > 1080)
+	if (ret > H)
 	{
-		datas->game->ty_off = (ret - 1080) / 2.0;
-		return (1080);
+		datas->game->ty_off = (ret - H) / 2.0;
+		return (H);
 	}
 	return (ret);
 }

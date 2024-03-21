@@ -1,11 +1,11 @@
 
 NO ./XPM/path_to_the_north_texture.xpm
 SO ./XPM/path_to_the_south_texture.xpm
-WE ./XPM/path_to_the_west_texture.xpm
-EA ./XPM/path_to_the_east_texture.xpm
+WE                                                         ./XPM/path_to_the_west_texture.xpm
+EA    ./XPM/path_to_the_east_texture.xpm
 
-F 58,57,35
-C 00,127,255
+F 0,0,0
+C 0a, 0, 0
 
 11111111111111111111111111111
 11110111111111011101010010001

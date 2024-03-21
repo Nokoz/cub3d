@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:32:57 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 14:23:58 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 15:01:18 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,30 @@ int	exist(char *wall_side_str, t_datas *datas)
 		error_exit(E_DATAS);
 	}
 	return (0);
+}
+
+char	*ft_strdup_no_space(const char *s1)
+{
+	char	*str;
+	char	*str1;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	if (!s1)
+		return (NULL);
+	str1 = (char *)s1;
+	str = malloc(sizeof(char) * ft_strlen(str1) + 1);
+	if (!str)
+		return (0);
+	while (str1[i])
+	{
+		if (str1[i] == 32)
+			i++;
+		else
+			str[j++] = str1[i++];
+	}
+	str[j] = '\0';
+	return (str);
 }

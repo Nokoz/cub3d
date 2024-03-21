@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:18:27 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 14:24:29 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 15:17:34 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,25 +72,6 @@ int	nbr_tab(char *str)
 		i++;
 	}
 	return (nbr_tab);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t	i;
-
-	i = 0;
-	if (!src)
-		return (0);
-	if (dstsize != 0)
-	{
-		while (src[i] && i < dstsize -1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (ft_strlen(src));
 }
 
 int	ft_atoi(const char *str)

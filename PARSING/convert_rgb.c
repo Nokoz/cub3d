@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:48:17 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 14:23:45 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 15:16:40 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,22 @@ void	keep_rgb_datas(char *str, t_datas *datas, char x, char **doc)
 {
 	if (x == 'C')
 	{
-		datas->rgb_datas->str_sky = malloc(sizeof(char) * ft_strlen(str) + 1);
+		datas->rgb_datas->str_sky = ft_strdup_no_space(str + 2);
 		if (!datas->rgb_datas->str_sky)
 		{
 			ft_free_2d_char(&doc);
 			free_all(datas);
 			error_exit(E_MALLOC);
 		}
-		ft_strlcpy(datas->rgb_datas->str_sky, str, ft_strlen(str) + 1);
 	}
 	if (x == 'F')
 	{
-		datas->rgb_datas->str_floor = malloc(sizeof(char) * ft_strlen(str) + 1);
+		datas->rgb_datas->str_floor = ft_strdup_no_space(str + 2);
 		if (!datas->rgb_datas->str_floor)
 		{
 			ft_free_2d_char(&doc);
 			free_all(datas);
 			error_exit(E_MALLOC);
 		}
-		ft_strlcpy(datas->rgb_datas->str_floor, str, ft_strlen(str) + 1);
 	}
 }

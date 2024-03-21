@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:49:04 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 14:24:01 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 14:58:36 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ static void	finding_textures(char **str, int i, t_datas *d)
 {
 	if (ft_strncmp(str[i], "NO ", 3) == 0
 		&& exist(d->textures->no->str, d) == 0)
-		d->textures->no->str = ft_strdup(str[i] + 5);
+		d->textures->no->str = ft_strdup_no_space(str[i] + 5);
 	if (ft_strncmp(str[i], "SO ", 3) == 0
 		&& exist(d->textures->so->str, d) == 0)
-		d->textures->so->str = ft_strdup(str[i] + 5);
+		d->textures->so->str = ft_strdup_no_space(str[i] + 5);
 	if (ft_strncmp(str[i], "WE ", 3) == 0
 		&& exist(d->textures->we->str, d) == 0)
-		d->textures->we->str = ft_strdup(str[i] + 5);
+		d->textures->we->str = ft_strdup_no_space(str[i] + 5);
 	if (ft_strncmp(str[i], "EA ", 3) == 0
 		&& exist(d->textures->ea->str, d) == 0)
-		d->textures->ea->str = ft_strdup(str[i] + 5);
+		d->textures->ea->str = ft_strdup_no_space(str[i] + 5);
 	if (ft_strncmp(str[i], "F ", 2) == 0
 		&& exist(d->rgb_datas->str_floor, d) == 0)
 	{

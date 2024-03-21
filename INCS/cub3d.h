@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:09 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 14:14:45 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 15:17:38 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,10 +219,10 @@ int		ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strchr(const char *s, int c);
 int		nbr_tab(char *str);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_atoi(const char *str);
 char	*ft_strdup(const char *s1);
 int		exist(char *wall_side_str, t_datas *datas);
+char	*ft_strdup_no_space(const char *s1);
 
 // ERROR & FREE //
 void	error_exit(char *str);

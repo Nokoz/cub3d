@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 10:19:31 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 10:22:53 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:49:03 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,12 @@ float	ft_get_wall_h(t_game *g, float dist)
 {
 	float	ret;
 
-	(void)g;
 	ret = ((30) * 1080) / dist;
+	g->step = 128 / ret;
 	if (ret > 1080)
+	{
+		g->ty_off = (ret - 1080) / 2.0;
 		return (1080);
+	}
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:28:32 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 10:58:33 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:48:52 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ typedef struct s_game
 	float		pdx;
 	float		pdy;
 	float		pa;
+	float		ty_off;
+	double		step;
 	t_map		map;
 	t_img		*img;
 	t_ray		*ray;

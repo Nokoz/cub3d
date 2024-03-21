@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:28:32 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/20 16:28:10 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 09:28:47 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # define MAPX 29
 # define MAPY 8
 //# define DR	0.01745329
-# define DR	0.0043633225
-# define STRP_W 6
+# define DR	0.0021816612
+# define STRP_W 3
 
 # define KEY_W		13
 # define KEY_A		0

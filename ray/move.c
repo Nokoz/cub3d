@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 08:48:20 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/19 14:12:06 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 09:26:51 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,5 @@ int	ft_key_handle(int key, t_game *game)
 		ft_rotate(game, KEY_LEFT);
 	else if (key == KEY_ESC)
 		exit(2);
-	ft_frame_loop(game);
 	return (0);
 }

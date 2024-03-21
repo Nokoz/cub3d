@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/20 15:58:49 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 09:33:24 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	noko(t_datas *d)
 	ft_init_win(d);
 
 	mlx_hook(d->game->win_ptr, 02, 1L<<0, ft_key_handle, d->game);
-//	mlx_loop_hook(game->mlx_ptr, ft_frame_loop, game);
+	mlx_loop_hook(d->game->mlx_ptr, ft_frame_loop, d->game);
 	mlx_loop(d->game->mlx_ptr);
 
 	return (0);
@@ -70,12 +70,12 @@ int		ft_frame_loop(t_game *g)
 	int i = 0;
 
 		ft_draw_background(g);
-		g->ray->ra = g->pa - (DR * 160);
+		g->ray->ra = g->pa - (DR * 320);
 		if (g->ray->ra < 0)
 			g->ray->ra += 2 * M_PI;
 		if (g->ray->ra > 2 * M_PI)
 			g->ray->ra -= 2 * M_PI;
-		while (i < 320)
+		while (i < 640)
 		{
 			if (g->ray->ra < 0)
 				g->ray->ra += 2 * M_PI;
@@ -88,7 +88,7 @@ int		ft_frame_loop(t_game *g)
 			i++;
 		}
 //		ft_show_mini(g);
-		ft_show_player(g);
+//		ft_show_player(g);
 		put_img(g);
 		destroy_img(g);
 		return (0);

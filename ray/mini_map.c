@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:54:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/20 21:24:33 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 09:33:38 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,11 @@ void ft_draw_line(t_game *g, int x, int offset, float wall_h)
 	step = 128 / wall_h;
 	texpos = (ly - 540 + wall_h/2) * step;
 
-	texX = (int) (g->ray->ry / 2.0) % 128;
+	if (g->ray->side == 0)
+		texX = (int) (g->ray->rx * 2.0) % 128;
+	else
+		texX = (int) (g->ray->ry * 2.0) % 128;
 //	texX = ft_set_texture_x(g);
-	printf("TX = %d\n", texX);
 	while (ly + i < y1)
 	{
 		texY = (int)texpos & (128-1);

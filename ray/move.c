@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 08:48:20 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 09:57:41 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:48:07 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,22 @@ void	ft_move_right(t_game *g)
 	}
 }
 
-int	ft_key_handle(int key, t_game *game)
+int	ft_key_handle(int key, t_datas *d)
 {
 	if (key == KEY_W)
-		ft_move_up(game);
+		ft_move_up(d->game);
 	else if (key == KEY_D)
-		ft_move_right(game);
+		ft_move_right(d->game);
 	else if (key == KEY_S)
-		ft_move_down(game);
+		ft_move_down(d->game);
 	else if (key == KEY_A)
-		ft_move_left(game);
+		ft_move_left(d->game);
 	else if (key == KEY_RIGHT)
-		ft_rotate(game, KEY_RIGHT);
+		ft_rotate(d->game, KEY_RIGHT);
 	else if (key == KEY_LEFT)
-		ft_rotate(game, KEY_LEFT);
+		ft_rotate(d->game, KEY_LEFT);
 	else if (key == KEY_ESC)
 		exit(2);
-	ft_frame_loop(game);
+	ft_frame_loop(d->game, d);
 	return (0);
 }

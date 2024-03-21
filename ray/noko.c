@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 10:24:15 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:46:35 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	noko(t_datas *d)
 	d->game->pdx = cos(d->game->pa) * 5;
 	d->game->pdy = sin(d->game->pa) * 5;
 	ft_init_win(d);
-	mlx_hook(d->game->win_ptr, 02, 1L << 0, ft_key_handle, d->game);
+	mlx_hook(d->game->win_ptr, 02, 1L << 0, ft_key_handle, d);
 //	mlx_loop_hook(d->game->mlx_ptr, ft_frame_loop, d->game);
 	mlx_loop(d->game->mlx_ptr);
 	return (0);
@@ -56,14 +56,14 @@ void	ft_init_win(t_datas *d)
 	d->game->win_ptr = d->win;
 }
 
-int	ft_frame_loop(t_game *g)
+int	ft_frame_loop(t_game *g, t_datas *d)
 {
 	int	i;
 
 	i = 0;
 	g->img->img = new_img(g->mlx_ptr);
 	g->img->addr = get_addr(g->img);
-	ft_draw_background(g);
+	ft_draw_background(d);
 	g->ray->ra = g->pa - (DR * 320);
 	if (g->ray->ra < 0)
 		g->ray->ra += 2 * M_PI;

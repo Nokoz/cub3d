@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:54:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 10:30:03 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:54:00 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ft_set_texture_x(t_game *g)
 	return (tx);
 }
 
-void	ft_draw_background(t_game *g)
+void	ft_draw_background(t_datas *d)
 {
 	int	i;
 	int	j;
@@ -79,9 +79,9 @@ void	ft_draw_background(t_game *g)
 		while (j < H)	
 		{
 			if (j > H / 2)
-				img_pix_put(g->img, i, j, 2960670);
+				img_pix_put(d->game->img, i, j, d->rgb_datas->floor);
 			else
-				img_pix_put(g->img, i, j, 8882050);
+				img_pix_put(d->game->img, i, j, d->rgb_datas->sky);
 			++j;
 		}
 		++i;

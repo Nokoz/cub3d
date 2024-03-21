@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:28:32 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 09:54:59 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:58:33 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,11 @@ typedef struct s_game
 float 	ft_start_dri(char c);
 void	ft_show_mini(t_game *game);
 void	ft_show_ray(t_game *game);
-void	ft_draw_background(t_game *game);
+//void	ft_draw_background(t_datas * data);
 void	ft_show_player(t_game *game);
 void	ft_print_square(t_game *game, int w, int h, char c);
-int		ft_frame_loop(t_game *game);
-int		ft_key_handle(int key, t_game *game);
+//int		ft_frame_loop(t_game *game, t_datas *d);
+//int		ft_key_handle(int key, t_game *game);
 void	img_pix_put(t_img *img, int x, int y, int color);
 void	ft_cast_ray(t_game *g);
 float	ft_cast_hori(t_ray *ray, t_game *g, float x, float y);

@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:54:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 11:52:01 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:08:26 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,17 @@ void	ft_draw_line(t_game *g, int x, int offset, float wall_h)
 	i = 0; 
 
 //	step = 128 / wall_h;
-//	texpos = (ly - 540 + wall_h/2) * g->step;
+//	texpos = (ly - 540 + wall_h/2) * g->ty_off;
+	texpos = g->step * g->ty_off;
+//	texY = g->ty_off * g->step;
 
 	texX = ft_set_texture_x(g);
-	texY = g->ty_off * g->step;
 	while (ly + i < y1)
 	{
+		texY = (int)texpos & (128 - 1);
 		color = draw_texture(g->data, (int)texX, texY);
 		img_pix_put(g->img, x, ly + i, color);
-		texY += g->step;
+		texpos += g->step;
 		i++;
 	}
 }

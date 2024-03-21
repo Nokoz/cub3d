@@ -1,5 +1,4 @@
 /* ************************************************************************** */
-/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -30,6 +29,7 @@ void	ft_draw_walls(t_game *g, int ray)
 	wall_h = ft_get_wall_h(g, dist);
 	line_o = 540 - wall_h / 2;
 	ft_draw_ray(g, wall_h, line_o, ray);
+/*                                                                            */
 }
 
 void	ft_set_wall_text(t_ray *r)
@@ -66,8 +66,9 @@ float	ft_get_wall_h(t_game *g, float dist)
 {
 	float	ret;
 
-	ret = ((30) * 1080) / dist;
-	g->step = 128 / ret;
+	ret = ((40) * 1080) / dist;
+	g->step = 128 / ret; //texture size
+	g->ty_off = 0;
 	if (ret > 1080)
 	{
 		g->ty_off = (ret - 1080) / 2.0;

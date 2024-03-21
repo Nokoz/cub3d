@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:47:24 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 13:52:41 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 15:28:59 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 #  define BUFFER_SIZE 50
 # endif
 
-#include "cub3d.h"
+# include "cub3d.h"
+
 # include <limits.h>
 
 char	*get_next_line(int fd);

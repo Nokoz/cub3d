@@ -6,13 +6,12 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:09 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 15:17:38 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 15:29:26 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-
 
 # include <mlx.h>
 # include <stdlib.h>

@@ -6,93 +6,31 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:54:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 09:33:38 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:30:03 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCS/common.h"
-
-void	ft_print_square(t_game *game, int w, int h, char c)
-{
-	int	i;
-	int	j;
-	int	color;
-
-	i = 0;
-	if (c == '1')
-		color = 13158600;
-	else
-		color = 6579300;
-	while (i < 60)
-	{
-		j = 0;
-		while (j < 60)
-		{
-			img_pix_put(game->img, (h * 64) + i, (w * 64) + j, color);
-			++j;
-		}
-		++i;
-	}
-}
-
-void	ft_show_mini(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (game->map.map[i]) {
-		j = 0;
-		while (game->map.map[i][j]) {
-			//			if (game->map.map[i][j] == '1')
-			ft_print_square(game, i, j, game->map.map[i][j]);
-			j++;
-		}
-		i++;
-	}
-}
-void ft_show_player(t_game *game)
-{
-    int i;
-    int j;
-
-	i = -4;
-    while (i < 5)
-    {
-        j = -4;
-        while (j < 5)
-        {
-            img_pix_put(game->img, game->px + i, game->py + j, 2009780);
-            j++;
-        }
-        i++;
-    }
-}
 
 void ft_draw_line(t_game *g, int x, int offset, float wall_h)
 {
 	int y1;
 	int ly;
 	int	i;
-	int	color;
 	int	texY;
 	int	texX;
+	int color;
 	double step;
 	double texpos;
 
 	y1 = offset + wall_h;
 	ly = offset;
 	i = 0; 
-	color =  /*0; */16724530;
 
 	step = 128 / wall_h;
 	texpos = (ly - 540 + wall_h/2) * step;
 
-	if (g->ray->side == 0)
-		texX = (int) (g->ray->rx * 2.0) % 128;
-	else
-		texX = (int) (g->ray->ry * 2.0) % 128;
-//	texX = ft_set_texture_x(g);
+	texX = ft_set_texture_x(g);
 	while (ly + i < y1)
 	{
 		texY = (int)texpos & (128-1);
@@ -106,6 +44,12 @@ void ft_draw_line(t_game *g, int x, int offset, float wall_h)
 int	ft_set_texture_x(t_game *g)
 {
 	int	tx;
+
+	if (g->ray->side == 0)
+		tx = (int) (g->ray->rx * 2.0) % 128;
+	else
+		tx = (int) (g->ray->ry * 2.0) % 128;
+	/*
 	if (g->ray->side == 0)
 	{
 		tx = (g->ray->ry - floor(g->ray->ry)) * 128;
@@ -119,50 +63,8 @@ int	ft_set_texture_x(t_game *g)
 		if (g->ray->ra < (float)M_PI_2 || g->ray->ra > (3 * (float)M_PI_2))// looking right
 			tx = (128 - tx - 1);
 	}
+	*/
 	return (tx);
-}
-
-void ft_show_ray(t_game *g)
-{
-	//fin de rayon
-	int x1 = g->ray->rx; int y1 = g->ray->ry;	
-	int lx = g->px; int ly = g->py;
-
-	int dx = abs(x1 - lx);
-	int dy = abs(y1 - ly);
-	int sx, sy, err, e2;
-
-	if (lx < x1)
-		sx = 1;
-	else
-		sx = -1;
-	if (ly < y1)
-		sy = 1;
-	else
-		sy = -1;
-	err = dx - dy;
-	while (1)
-	{
-		img_pix_put(g->img, (int)lx, (int)ly, 3668530);
-		if (lx == x1 && ly == y1)
-			break ;
-		e2 = 2 * err;
-		if (e2 > -dy)
-		{
-			err -= dy;
-			lx += sx;
-		}
-		if (lx == x1 && ly == y1)
-		{
-			img_pix_put(g->img, (int)lx, (int)ly, 3668530);
-			break ;
-		}
-		if (e2 < dx)
-		{
-			err += dx;
-			ly += sy;
-		}
-	}
 }
 
 void	ft_draw_background(t_game *g)

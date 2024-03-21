@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 09:33:24 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:24:15 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,30 @@
 
 int	noko(t_datas *d)
 {
-//	t_game	*game;
-//	t_map	map;
 	t_img	*img;
 	t_ray	*ray;
 
-//	game = malloc(sizeof(t_game));
 	img = malloc(sizeof(t_img));
 	ray = malloc(sizeof(t_ray));
-//	char *mapy = "1111111\n1100001\n1000101\n1000001\n1100001\n1111111\n";
-//	char *mapy = "11111111111111111111111111111\n11110111111111011101010010001\n11000000110101011100000010001\n10000000000000001100000010001\n10000000000000000001010000001\n11000001110101011111011110N0111\n11110111 1110101 101111010001\n11111111 1111111 111111111111\n";
-
-//	map.map = ft_split(mapy, '\n');
 	d->game->data = d;
 	d->game->map.map = d->map;
+	d->game->map.x = d->map_x;
+	d->game->map.y = d->map_y;
 	d->game->img = img;
 	d->game->ray = ray;
-	d->game->px = d->start_x *64;
-	d->game->py = d->start_y *64;
-	d->game->pa = ft_start_dri(d->orientation);// check orientation
+	d->game->px = d->start_x * 64;
+	d->game->py = d->start_y * 64;
+	d->game->pa = ft_start_dri(d->orientation);
 	d->game->pdx = cos(d->game->pa) * 5;
 	d->game->pdy = sin(d->game->pa) * 5;
 	ft_init_win(d);
-
-	mlx_hook(d->game->win_ptr, 02, 1L<<0, ft_key_handle, d->game);
-	mlx_loop_hook(d->game->mlx_ptr, ft_frame_loop, d->game);
+	mlx_hook(d->game->win_ptr, 02, 1L << 0, ft_key_handle, d->game);
+//	mlx_loop_hook(d->game->mlx_ptr, ft_frame_loop, d->game);
 	mlx_loop(d->game->mlx_ptr);
-
 	return (0);
 }
 
-float ft_start_dri(char c)
+float	ft_start_dri(char c)
 {
 	if (c == 'S')
 		return (M_PI / 2);
@@ -63,94 +56,30 @@ void	ft_init_win(t_datas *d)
 	d->game->win_ptr = d->win;
 }
 
-int		ft_frame_loop(t_game *g)
-{
-	g->img->img = new_img(g->mlx_ptr);
-	g->img->addr = get_addr(g->img);
-	int i = 0;
-
-		ft_draw_background(g);
-		g->ray->ra = g->pa - (DR * 320);
-		if (g->ray->ra < 0)
-			g->ray->ra += 2 * M_PI;
-		if (g->ray->ra > 2 * M_PI)
-			g->ray->ra -= 2 * M_PI;
-		while (i < 640)
-		{
-			if (g->ray->ra < 0)
-				g->ray->ra += 2 * M_PI;
-			if (g->ray->ra > 2 * M_PI)
-				g->ray->ra -= 2 * M_PI;
-	//		ft_ray_dist(g);
-			ft_draw_walls(g, i);
-		//	ft_show_ray(g);
-			g->ray->ra += DR;
-			i++;
-		}
-//		ft_show_mini(g);
-//		ft_show_player(g);
-		put_img(g);
-		destroy_img(g);
-		return (0);
-}
-
-void	ft_draw_walls(t_game *g, int ray)
-{
-	float	dist;
-	float	wall_h;
-	float	line_o;
-	float	ca;
-
-	ca = g->pa - g->ray->ra; //fisheye
-	dist = ft_ray_dist(g);
-	ft_set_wall_text(g->ray);
-	if (ca < 0)
-		ca += 2 * M_PI;
-	if (ca > 2 * M_PI)
-		ca -= 2 * M_PI;
-	dist *= cos(ca);
-	wall_h = ft_get_wall_h(g, dist);
-	line_o = 540 - wall_h / 2;
-	ft_draw_ray(g, wall_h, line_o, ray);
-}
-
-void	ft_set_wall_text(t_ray *r)
-{
-	if (r->side == 0)
-	{ // Si le mur est hori
-		if (r->ra > (float)M_PI && r->ra != (float) M_PI * 2) // looking up
-			r->wall = 'n';
-		else
-			r->wall = 's';
-	}
-	else
-	{ // Si le mur est verti
-		if (r->ra > (float)M_PI_2 && r->ra < (3 * (float) M_PI_2)) // looking left
-            r->wall = 'w';
-        else
-            r->wall = 'e';
-    }
-}
-
-void	ft_draw_ray(t_game *g, float wall_h, float line_o, int ray)
+int	ft_frame_loop(t_game *g)
 {
 	int	i;
 
 	i = 0;
-	while (i < STRP_W)
+	g->img->img = new_img(g->mlx_ptr);
+	g->img->addr = get_addr(g->img);
+	ft_draw_background(g);
+	g->ray->ra = g->pa - (DR * 320);
+	if (g->ray->ra < 0)
+		g->ray->ra += 2 * M_PI;
+	if (g->ray->ra > 2 * M_PI)
+		g->ray->ra -= 2 * M_PI;
+	while (i < 640)
 	{
-		ft_draw_line(g, (ray * STRP_W + i), line_o, wall_h);
+		if (g->ray->ra < 0)
+			g->ray->ra += 2 * M_PI;
+		if (g->ray->ra > 2 * M_PI)
+			g->ray->ra -= 2 * M_PI;
+		ft_draw_walls(g, i);
+		g->ray->ra += DR;
 		i++;
 	}
-}
-
-float	ft_get_wall_h(t_game *g, float dist)
-{
-	float	ret;
-	(void)g;
-
-	ret = ((30) * 1080) / dist;
-	if (ret > 1080)
-		return (1080);
-	return (ret);
+	put_img(g);
+	destroy_img(g);
+	return (0);
 }

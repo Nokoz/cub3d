@@ -6,7 +6,7 @@
 /*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:28:32 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 09:28:47 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/21 09:54:59 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ void	ft_move_down(t_game *g);
 void	ft_move_left(t_game *g);
 void	ft_move_right(t_game *g);
 void	ft_rotate(t_game *g, int key);
+bool	ft_collision(t_game *g, int key);
+bool	ft_collision_side(t_game *g, int key);
 
 //wrapper
 void	*new_img(void *mlx_ptr);

@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:48:50 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 16:19:48 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 17:33:00 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ static int	ft_strcmp_mod(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-static int	check_format_cub(char *str)
+int	check_format_cub(char *str, char *ext)
 {
 	size_t	len;
 
 	len = ft_strlen(str);
 	if (len < 4)
 		return (1);
-	return (ft_strcmp_mod(str + len - 4, ".cub"));
+	return (ft_strcmp_mod(str + len - 4, ext));
 }
 
 void	check_arg(int argc, char *lib, t_datas *datas)
@@ -39,7 +39,7 @@ void	check_arg(int argc, char *lib, t_datas *datas)
 		free(datas);
 		error_exit(E_ARG);
 	}
-	if (check_format_cub(lib) != 0)
+	if (check_format_cub(lib, ".cub") != 0)
 	{
 		free(datas);
 		error_exit(E_FILE);

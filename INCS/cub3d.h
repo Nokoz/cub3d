@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:09 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 16:19:14 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 17:49:45 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 # define E_PATH "ERROR !\nCause : the map is not closed or contain space\n"
 # define E_MLX "ERROR !\nCause : the MinilibX is crashed\n"
 # define E_XPM "ERROR !\nCause : image can't download\n"
+# define E_X "ERROR !\nCause : Not an XPM\n"
 # define E_WIN "ERROR !\nCause : the window is crashed\n"
 
 typedef struct s_img
@@ -199,6 +200,7 @@ void	check_arg(int argc, char *lib, t_datas *datas);
 int		is_map(char *str);
 int		check_map(t_datas *datas);
 char	**copy_map(char **doc, int i, t_datas *datas);
+int		check_format_cub(char *str, char *ext);
 
 // PATH FINDING //
 void	dupmap_init(t_datas *d);

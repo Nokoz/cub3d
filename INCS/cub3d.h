@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:09 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 17:49:45 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 18:01:39 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define E_COLOR "ERROR !\nCause : Wrong value for the color\n"
 # define E_DATAS "ERROR !\nCause : Too much colors or textures infos in .cub\n"
 # define E_FD "ERROR !\nCause : opening of fd failed\n"
-# define E_PLAYER "ERROR !\nCause : wrong number of player for this game\n"
+# define E_PLAYER "ERROR !\nCause : only one player(S,N,W,E) for this game\n"
 # define E_PATH "ERROR !\nCause : the map is not closed or contain space\n"
 # define E_MLX "ERROR !\nCause : the MinilibX is crashed\n"
 # define E_XPM "ERROR !\nCause : image can't download\n"

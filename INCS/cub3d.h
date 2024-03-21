@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:09 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 15:29:26 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/21 15:39:25 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define W 1920
 # define MAPX 29
 # define MAPY 8
-//# define DR	0.01745329
 # define DR	0.0021816612
 # define STRP_W 3
 
@@ -69,7 +68,7 @@ typedef struct s_img
 
 typedef struct s_map
 {
-	char 	**map;
+	char	**map;
 	int		x;
 	int		y;
 }				t_map;
@@ -82,18 +81,16 @@ typedef struct s_ray
 	int		mp;
 	int		side;
 	char	wall;
-	//depth of field
 	int		dof;
 	float	rx;
 	float	ry;
 	float	ra;
-	//offset
 	float	xo;
 	float	yo;
 }				t_ray;
 
 typedef struct s_game
-{	
+{
 	void		*mlx_ptr;
 	void		*win_ptr;
 	float		px;
@@ -115,9 +112,9 @@ typedef struct s_texture_struct {
 	char	*data;
 	int		w;
 	int		h;
-    int		size_l;
-    int		bpp;
-    int		endian;
+	int		size_l;
+	int		bpp;
+	int		endian;
 }				t_texture_struct;
 
 typedef struct s_texture {
@@ -155,10 +152,9 @@ void	ft_init_win(t_datas *d);
 int		noko(t_datas *d);
 void	ft_draw_background(t_datas *data);
 int		ft_frame_loop(t_game *game, t_datas *d);
-int		ft_key_handle(int key, t_datas * d);
-float 	ft_start_dri(char c);
+int		ft_key_handle(int key, t_datas *d);
+float	ft_start_dri(char c);
 void	img_pix_put(t_img *img, int x, int y, int color);
-// void	ft_cast_ray(t_datas *datas);
 float	ft_cast_hori(t_ray *ray, t_datas *datas, float x, float y);
 float	ft_cast_verti(t_ray *ray, t_datas *datas, float x, float y);
 void	ft_iter_offset(t_ray *ray, t_datas *datas, float xo, float yo);
@@ -190,7 +186,7 @@ int		handle_mlx(t_datas *datas);
 int		assign_textures(t_datas *d);
 
 // DRAWING // 
-int 	get_pixel_color(t_texture_struct *texture, int x, int y);
+int		get_pixel_color(t_texture_struct *texture, int x, int y);
 int		draw_texture(t_datas *datas, int x, int y);
 
 // PARSING //

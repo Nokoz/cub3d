@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 08:48:20 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 13:51:37 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/22 10:45:45 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ int	ft_key_handle(int key, t_datas *d)
 	else if (key == KEY_LEFT)
 		ft_rotate(d->game, KEY_LEFT);
 	else if (key == KEY_ESC)
-		exit(2);
+	{
+		free_all(d);
+		exit(0);
+	}
 	ft_frame_loop(d->game, d);
 	return (0);
 }

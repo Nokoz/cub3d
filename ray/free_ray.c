@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   free_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvardaki <gvardaki@student.42.be>          +#+  +:+       +#+        */
+/*   By: gvardaki <gvardaki@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 12:41:12 by gvardaki          #+#    #+#             */
-/*   Updated: 2023/04/03 19:15:33 by gvardaki         ###   ########.fr       */
+/*   Created: 2024/03/22 10:34:14 by gvardaki          #+#    #+#             */
+/*   Updated: 2024/03/22 10:48:28 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-int	ft_isdigit(int c)
+#include "../INCS/cub3d.h"
+
+void	ft_free_ray(t_datas *d)
 {
-	if (!c)
-		return (0);
-	if (c > 47 && c < 58)
-		return (1);
-	else
-		return (0);
+	if (d->game->ray != NULL)
+		ft_freee((void **)&d->game->ray);
+	if (d->game->img != NULL)
+		ft_freee((void **)&d->game->img);
+	if (d->game != NULL)
+		ft_freee((void **)&d->game);
 }

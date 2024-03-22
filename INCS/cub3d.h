@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:09 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 18:01:39 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/22 10:47:41 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ typedef struct s_datas
 }				t_datas;
 
 // RAYCASTING //
+void	ft_init_game_var(t_datas *d);
 void	ft_init_win(t_datas *d);
 int		noko(t_datas *d);
 void	ft_draw_background(t_datas *data);
@@ -230,5 +231,6 @@ void	error_exit(char *str);
 void	ft_free_2d_char(char ***str_ptr);
 void	ft_freee(void **value);
 void	free_all(t_datas *d);
+void	ft_free_ray(t_datas *d);
 
 #endif

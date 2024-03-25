@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:05:01 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/25 11:18:35 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:27:55 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	ft_init_game_var(t_datas *d)
 	d->game->map.map = d->map;
 	d->game->map.x = d->map_x;
 	d->game->map.y = d->map_y;
-	d->game->px = d->start_x * 64;
-	d->game->py = d->start_y * 64;
+	d->game->px = (d->start_x * 64) + 20;
+	d->game->py = (d->start_y * 64) + 20;
 	d->game->pa = ft_start_dir(d->orientation);
 	d->game->pdx = cos(d->game->pa) * 5;
 	d->game->pdy = sin(d->game->pa) * 5;

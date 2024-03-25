@@ -7,7 +7,7 @@ OBJ_DIR = .objs
 SRCS = main.c \
 	   ./ray/ray.c \
 	   ./ray/move.c \
-	   ./ray/noko.c \
+	   ./ray/start_cast.c \
 	   ./ray/rotation_collision.c \
 	   ./ray/mlx_image_wrapper.c \
 	   ./ray/walls.c \
@@ -33,7 +33,7 @@ OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 CC = gcc
 HEAD = -lmlx -framework OpenGL -framework Appkit
-CFLAGS =  -IINCS -Wall -Werror -Wextra #-fsanitize=address
+CFLAGS =  -IINCS -Wall -Werror -Wextra
 RM = /bin/rm -rf
 
 all: $(NAME)

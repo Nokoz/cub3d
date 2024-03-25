@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:32:57 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 17:50:08 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/25 16:18:55 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ char	**copy_map(char **doc, int i, t_datas *datas)
 	}
 	while (doc[i])
 	{
+		if (is_map(doc[i]) == 1)
+		{
+			free_all(datas);
+			error_exit(E_MAP);
+		}
 		mappy[j] = ft_strdup_no_tab(doc[i], 0, 0, 0);
 		j++;
 		i++;

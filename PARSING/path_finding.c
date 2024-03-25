@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 16:06:28 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 14:57:44 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/25 16:17:47 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	where_is_p(t_datas *datas)
 static void	find_exit(char **mappy, t_datas *datas, int y, int x)
 {
 	if (y < 0 || x < 0 || y > ft_strlen_double_tab(datas->map)
-		|| x > ft_strlen(datas->map[y]) || datas->map[y][x] == 32)
+		|| x >= ft_strlen(datas->map[y]) || datas->map[y][x] == 32)
 	{
 		datas->openmap = true;
 		return ;
@@ -78,9 +78,7 @@ static void	find_exit(char **mappy, t_datas *datas, int y, int x)
 void	dupmap_init(t_datas *d)
 {
 	char	**mappy;
-	int		y;
 
-	y = 0;
 	mappy = create_mappy(d);
 	where_is_p(d);
 	d->openmap = false;

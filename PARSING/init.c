@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:49:04 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/25 10:55:27 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/25 16:19:40 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	finding_datas(char **doc, t_datas *datas)
 	while (doc[++i])
 	{
 		finding_textures(doc, i, datas);
-		if (is_map(doc[i]) == 0)
+		if (doc[i] && is_map(doc[i]) == 0)
 		{
 			if ((datas->textures->ea->str == NULL)
 				|| (datas->textures->we->str == NULL)

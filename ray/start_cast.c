@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_cast.c                                             :+:      :+:    :+:   */
+/*   start_cast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/25 09:55:31 by salowie          ###   ########.fr       */
+/*   Created: 2024/03/25 11:05:01 by salowie           #+#    #+#             */
+/*   Updated: 2024/03/25 11:18:35 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,15 @@ float	ft_start_dir(char c)
 
 void	ft_init_win(t_datas *d)
 {
+	void	*start;
+	int		h;
+	int		w;
+
 	d->game->mlx_ptr = d->mlx;
 	d->game->win_ptr = d->win;
+	start = mlx_xpm_file_to_image(d->mlx, "./XPM/press_start.xpm", &h, &w);
+	mlx_put_image_to_window(d->mlx, d->win, start, 720, 340);
+	mlx_destroy_image(d->mlx, start);
 }
 
 int	ft_frame_loop(t_game *g, t_datas *d)

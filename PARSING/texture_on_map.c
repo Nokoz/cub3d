@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:17:03 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 14:24:26 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/25 09:46:17 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	draw_texture(t_datas *datas, int x, int y)
 {
 	int	color;
 
+	color = 0;
 	if (datas->game->ray->wall == 'e')
 		color = get_pixel_color(datas->textures->ea, x, y);
 	else if (datas->game->ray->wall == 'w')

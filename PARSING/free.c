@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 12:22:00 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/22 10:32:10 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/25 08:44:11 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ void	free_all(t_datas *d)
 	if (d->map != NULL)
 		ft_free_2d_char(&d->map);
 	ft_free_ray(d);
+	mlx_clear_window(d->mlx, d->win);
+	mlx_destroy_window(d->mlx, d->win);
+	free(d->mlx);
 	if (d != NULL)
 		ft_freee((void **)&d);
 }

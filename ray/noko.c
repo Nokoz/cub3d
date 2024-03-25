@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:32:28 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 15:57:25 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/25 09:50:48 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,40 @@ int	noko(t_datas *d)
 	t_ray	*ray;
 
 	img = malloc(sizeof(t_img));
+	if (!img)
+	{
+		free_all(d);
+		error_exit(E_MALLOC);
+	}
 	ray = malloc(sizeof(t_ray));
-	d->game->data = d;
-	d->game->map.map = d->map;
-	d->game->map.x = d->map_x;
-	d->game->map.y = d->map_y;
+	if (!ray)
+	{
+		free_all(d);
+		error_exit(E_MALLOC);
+	}
 	d->game->img = img;
 	d->game->ray = ray;
-	d->game->px = d->start_x * 64;
-	d->game->py = d->start_y * 64;
-	d->game->pa = ft_start_dri(d->orientation);
-	d->game->pdx = cos(d->game->pa) * 5;
-	d->game->pdy = sin(d->game->pa) * 5;
+	ft_init_game_var(d);
 	ft_init_win(d);
 	mlx_hook(d->game->win_ptr, 02, 1L << 0, ft_key_handle, d);
 	mlx_loop(d->game->mlx_ptr);
 	return (0);
 }
 
-float	ft_start_dri(char c)
+void	ft_init_game_var(t_datas *d)
+{
+	d->game->data = d;
+	d->game->map.map = d->map;
+	d->game->map.x = d->map_x;
+	d->game->map.y = d->map_y;
+	d->game->px = d->start_x * 64;
+	d->game->py = d->start_y * 64;
+	d->game->pa = ft_start_dir(d->orientation);
+	d->game->pdx = cos(d->game->pa) * 5;
+	d->game->pdy = sin(d->game->pa) * 5;
+}
+
+float	ft_start_dir(char c)
 {
 	if (c == 'S')
 		return (M_PI / 2);

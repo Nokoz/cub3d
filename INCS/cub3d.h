@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:09 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 18:01:39 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/25 09:50:48 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,12 +153,13 @@ typedef struct s_datas
 }				t_datas;
 
 // RAYCASTING //
+void	ft_init_game_var(t_datas *d);
 void	ft_init_win(t_datas *d);
 int		noko(t_datas *d);
 void	ft_draw_background(t_datas *data);
 int		ft_frame_loop(t_game *game, t_datas *d);
 int		ft_key_handle(int key, t_datas *d);
-float	ft_start_dri(char c);
+float	ft_start_dir(char c);
 void	img_pix_put(t_img *img, int x, int y, int color);
 float	ft_cast_hori(t_ray *ray, t_datas *datas, float x, float y);
 float	ft_cast_verti(t_ray *ray, t_datas *datas, float x, float y);
@@ -230,5 +231,6 @@ void	error_exit(char *str);
 void	ft_free_2d_char(char ***str_ptr);
 void	ft_freee(void **value);
 void	free_all(t_datas *d);
+void	ft_free_ray(t_datas *d);
 
 #endif

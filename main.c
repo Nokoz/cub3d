@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:40:16 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 15:40:43 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/22 10:39:46 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,15 @@ int	main(int ac, char **av)
 
 	datas = sarah(ac, av);
 	game = malloc(sizeof(t_game));
+	if (!game)
+	{
+		free_all(datas);
+		error_exit(E_MALLOC);
+	}
 	datas->game = game;
 	noko(datas);
 	free_all(datas);
+	//??destroy win, free mlx_ptr??
 	return (0);
 }
 

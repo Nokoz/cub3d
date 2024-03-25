@@ -1,9 +1,5 @@
 NAME = cub3d
 
-#LIBFT_PATH = ./libft
-
-LIBFT = $(LIBFT_PATH)/libft.a
-
 SRC_DIR = ./ray
 
 OBJ_DIR = .objs
@@ -17,14 +13,13 @@ OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 CC = gcc
 HEAD = -lmlx -framework OpenGL -framework Appkit #-L$(LIBFT_PATH)
-CFLAGS =  -IINCS -I$(LIBFT_PATH) -Wall -Werror -Wextra #-fsanitize=address
+CFLAGS =  -IINCS -Wall -Werror -Wextra #-fsanitize=address
 RM = /bin/rm -rf
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-#		make -C $(LIBFT_PATH)
-		@$(CC) $(OBJ) $(HEAD) $(CFLAGS) -o $(NAME) #-lft
+		@$(CC) $(OBJ) $(HEAD) $(CFLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		@mkdir -p $(OBJ_DIR)

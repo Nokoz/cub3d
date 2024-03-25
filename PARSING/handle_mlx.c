@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 10:48:12 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 14:23:56 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/25 10:46:47 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	handle_mlx(t_datas *datas)
 	datas->win = mlx_new_window(datas->mlx, 1920, 1080, "Three dies");
 	if (!datas->win)
 	{
-		mlx_destroy_window(datas->mlx, datas->win);
 		free_all(datas);
 		error_exit(E_WIN);
 	}

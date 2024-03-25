@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:49:04 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 17:49:36 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/25 10:55:27 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,11 @@ void	init_variables(t_datas *datas, char *lib)
 
 	doc = NULL;
 	datas->map = NULL;
+	datas->game->img = NULL;
+	datas->game->ray = NULL;
+	datas->game->data = NULL;
+	datas->win = NULL;
+	datas->mlx = NULL;
 	init_textures(datas);
 	init_rgb_datas(datas);
 	doc = convert_doc(lib, datas);

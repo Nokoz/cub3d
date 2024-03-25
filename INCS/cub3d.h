@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:09 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/25 09:50:48 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/25 10:52:59 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ typedef struct s_datas
 // RAYCASTING //
 void	ft_init_game_var(t_datas *d);
 void	ft_init_win(t_datas *d);
-int		noko(t_datas *d);
+int		start_cast(t_datas *d);
 void	ft_draw_background(t_datas *data);
 int		ft_frame_loop(t_game *game, t_datas *d);
 int		ft_key_handle(int key, t_datas *d);
@@ -196,6 +196,7 @@ int		get_pixel_color(t_texture_struct *texture, int x, int y);
 int		draw_texture(t_datas *datas, int x, int y);
 
 // PARSING //
+t_datas	*start_parsing(int argc, char **argv, t_game *game);
 void	init_variables(t_datas *datas, char *lib);
 void	check_arg(int argc, char *lib, t_datas *datas);
 int		is_map(char *str);

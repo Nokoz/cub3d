@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:48:50 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 17:33:00 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/25 10:54:59 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,13 @@ void	check_arg(int argc, char *lib, t_datas *datas)
 	if (argc != 2)
 	{
 		free(datas);
+		free(datas->game);
 		error_exit(E_ARG);
 	}
 	if (check_format_cub(lib, ".cub") != 0)
 	{
 		free(datas);
+		free(datas->game);
 		error_exit(E_FILE);
 	}
 }
@@ -60,7 +62,6 @@ int	assign_textures(t_datas *d)
 		|| !d->textures->so->xpm || !d->textures->we->xpm)
 	{
 		free_all(d);
-		mlx_destroy_window(d->mlx, d->win);
 		error_exit(E_XPM);
 	}
 	return (0);

@@ -39,7 +39,7 @@ RM = /bin/rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		@$(CC) $(OBJ) $(HEAD) $(CFLAGS) -o $(NAME)
+		@$(CC) $(OBJ) $(CFLAGS) -o $(NAME) $(HEAD)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		@mkdir -p $(OBJ_DIR)

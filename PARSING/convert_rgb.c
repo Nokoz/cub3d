@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:48:17 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/26 11:08:29 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/26 12:14:16 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int	is_neg_or_alpha(char *str)
 	{
 		if (str[i] == '-')
 			return (1);
+		if (str[i] == '+')
+			i++;
 		if (!(str[i] >= '0' && str[i] <= '9'))
 			return (1);
 		i++;

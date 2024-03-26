@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:09 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/25 10:52:59 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/26 11:07:42 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define E_DOC "ERROR !\nCause : wrong structure of doc .cub\n"
 # define E_EMPTY "ERROR !\nCause : the .cub is empty\n"
 # define E_MALLOC "ERROR !\nCause : malloc failed\n"
-# define E_COLOR "ERROR !\nCause : Wrong value for the color\n"
+# define E_COLOR "ERROR !\nCause : Wrong input for the color\n"
 # define E_DATAS "ERROR !\nCause : Too much colors or textures infos in .cub\n"
 # define E_FD "ERROR !\nCause : opening of fd failed\n"
 # define E_PLAYER "ERROR !\nCause : only one player(S,N,W,E) for this game\n"
@@ -216,7 +216,7 @@ int		rgbtoint(int r, int g, int b);
 // UTILS //
 char	**ft_split(char const *s, char c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_strlen_double_tab(char **tab);
+int		ft_strlen_2d(char **tab);
 char	*ft_strdup_no_tab(char *s1, int i, int j, int x);
 int		ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);

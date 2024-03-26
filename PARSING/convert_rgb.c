@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:48:17 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/21 16:41:07 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/26 11:08:29 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,31 @@ static int	is_neg_or_alpha(char *str)
 
 void	assign_rgb(t_datas *datas, char *color, char x, char **doc)
 {
-	char	**datas_rgb;
-	int		res[3];
-	int		neg_or_alpha;
+	char	**rgb;
+	int		r[3];
+	int		n_or_a;
 	int		i;
 
 	i = 0;
-	datas_rgb = ft_split(color, ',');
-	while (datas_rgb[i])
+	rgb = ft_split(color, ',');
+	while (rgb[i])
 	{
-		neg_or_alpha = is_neg_or_alpha(datas_rgb[i]);
-		res[i] = ft_atoi(datas_rgb[i]);
-		if (res[i] < 0 || res[i] > 255 || neg_or_alpha == 1)
+		n_or_a = is_neg_or_alpha(rgb[i]);
+		r[i] = ft_atoi(rgb[i]);
+		if (r[i] < 0 || r[i] > 255 || n_or_a == 1 || ft_strlen_2d(rgb) != 3)
 		{
 			ft_free_2d_char(&doc);
-			ft_free_2d_char(&datas_rgb);
+			ft_free_2d_char(&rgb);
 			free_all(datas);
 			error_exit(E_COLOR);
 		}
 		i++;
 	}
-	ft_free_2d_char(&datas_rgb);
+	ft_free_2d_char(&rgb);
 	if (x == 'C')
-		datas->rgb_datas->sky = rgbtoint(res[0], res[1], res[2]);
+		datas->rgb_datas->sky = rgbtoint(r[0], r[1], r[2]);
 	if (x == 'F')
-		datas->rgb_datas->floor = rgbtoint(res[0], res[1], res[2]);
+		datas->rgb_datas->floor = rgbtoint(r[0], r[1], r[2]);
 }
 
 void	keep_rgb_datas(char *str, t_datas *datas, char x, char **doc)

@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:35:28 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/25 16:01:22 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/26 11:07:42 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	nbr_of_player(t_datas *datas)
 
 	y = 0;
 	datas->nbr_of_player = 0;
-	while (datas->map[y] && y <= ft_strlen_double_tab(datas->map))
+	while (datas->map[y] && y <= ft_strlen_2d(datas->map))
 	{
 		x = 0;
 		while (datas->map[y][x] && x <= ft_strlen(datas->map[y]))

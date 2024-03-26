@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:32:57 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/25 16:18:55 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/26 11:07:42 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**copy_map(char **doc, int i, t_datas *datas)
 	char	**mappy;
 
 	j = 0;
-	map_lenght = ft_strlen_double_tab(doc) - i;
+	map_lenght = ft_strlen_2d(doc) - i;
 	mappy = malloc(sizeof(char *) * (map_lenght + 1));
 	if (!mappy)
 	{

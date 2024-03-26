@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 16:06:28 by salowie           #+#    #+#             */
-/*   Updated: 2024/03/25 16:17:47 by salowie          ###   ########.fr       */
+/*   Updated: 2024/03/26 11:07:42 by salowie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static char	**create_mappy(t_datas *datas)
 	int		y;
 
 	y = 0;
-	mappy = malloc(sizeof(char *) * (ft_strlen_double_tab(datas->map) + 1));
+	mappy = malloc(sizeof(char *) * (ft_strlen_2d(datas->map) + 1));
 	if (mappy == NULL)
 	{
 		free_all(datas);
 		error_exit(E_MALLOC);
 	}
-	while (datas->map[y] && y <= ft_strlen_double_tab(datas->map))
+	while (datas->map[y] && y <= ft_strlen_2d(datas->map))
 	{
 		mappy[y] = ft_strdup(datas->map[y]);
 		y++;
@@ -39,7 +39,7 @@ static void	where_is_p(t_datas *datas)
 	int	x;
 
 	y = 0;
-	while (datas->map[y] && y <= ft_strlen_double_tab(datas->map))
+	while (datas->map[y] && y <= ft_strlen_2d(datas->map))
 	{
 		x = 0;
 		while (datas->map[y][x] && x <= ft_strlen(datas->map[y]))
@@ -59,7 +59,7 @@ static void	where_is_p(t_datas *datas)
 
 static void	find_exit(char **mappy, t_datas *datas, int y, int x)
 {
-	if (y < 0 || x < 0 || y > ft_strlen_double_tab(datas->map)
+	if (y < 0 || x < 0 || y > ft_strlen_2d(datas->map)
 		|| x >= ft_strlen(datas->map[y]) || datas->map[y][x] == 32)
 	{
 		datas->openmap = true;

@@ -6,7 +6,7 @@
 /*   By: salowie <salowie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 09:57:09 by gvardaki          #+#    #+#             */
-/*   Updated: 2024/03/21 15:09:17 by gvardaki         ###   ########.fr       */
+/*   Updated: 2024/03/26 09:14:55 by gvardaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	ft_collision(t_game *g, int key)
 	a = g->pa;
 	if (key == KEY_S)
 		a += 180.0;
-	dist = 8.0;
+	dist = 5.0;
 	x = g->px + dist * cos(a);
 	y = g->py + dist * sin(a);
 	if (g->map.map[(int)y >> 6][(int)x >> 6] != '0'
@@ -44,7 +44,7 @@ bool	ft_collision_side(t_game *g, int key)
 	a = g->pa - (M_PI / 2);
 	if (key == KEY_D)
 		a = g->pa + (M_PI / 2);
-	dist = 8.0;
+	dist = 5.0;
 	x = g->px + dist * cos(a);
 	y = g->py + dist * sin(a);
 	if (g->map.map[(int)y >> 6][(int)x >> 6] != '0'
